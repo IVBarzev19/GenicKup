@@ -229,7 +229,43 @@ void searchByEra(NODE* node, string sEra)
 
 //void search
 
-//void deleteNode
+//incomplete - does not delete, only notes down the node
+void deleteNode(NODE* node, string sTitle)
+{
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+    }
+
+    while (node != NULL)
+    {
+        if (convertToLower(node->mOccasionTitle).find(convertToLower(sTitle)) != string::npos)
+        {
+            cout << endl << "Deleting node '" << node->mOccasionTitle << "'" << endl;
+
+            if (node->prev != NULL)
+            {
+                node->prev->next = node->next;
+            }
+            else
+            {
+                node->next->prev = NULL;
+            }
+            
+            if (node->next != NULL)
+            {
+                node->next->prev = node->prev;
+            }
+            else
+            {
+                node->prev->next = NULL;
+            }
+            break;
+        }
+        node = node->next;
+    }
+
+}
 
 int main()
 {
@@ -240,9 +276,7 @@ int main()
     prependNode(&node);
     appendNode(&node);
 
-    assignAllEras(node);
-
-    searchByEra(node, "Middle ages");
+    deleteNode(node, "The conquer of Constantinople");
 
     print(node);
 
