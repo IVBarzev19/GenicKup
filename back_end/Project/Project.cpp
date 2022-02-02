@@ -12,8 +12,8 @@ struct NODE
     short int mOccasionYear = 0;
     unsigned short int mOccasionMonth = 0;
     unsigned short int mOccasionDay = 0;
-    NODE* next;
-    NODE* previous;
+    NODE* next = NULL;
+    NODE* previous = NULL;
 };
 
 //complete
@@ -84,20 +84,39 @@ void assignTags(NODE* node)
     }
 }
 
-//incomplete - must add previous
+//complete
 void prependNode(NODE** node)
 {
     NODE* newNode = new NODE;
     newNode->mOccasionTitle = "The fall of Constantinople";
     newNode->next = *node;
-    newNode->previous = NULL;
+    newNode->previous = (*node)->previous;
     (*node)->previous = newNode;
     *node = newNode;
 }
 
-//used for testing
+//complete
+void appendNode(NODE** node)
+{
+    while ((*node)->next != NULL)
+    {
+        (*node) = (*node)->next;
+    }
+    NODE* newNode = new NODE;
+    newNode->mOccasionTitle = "The 1-hundred years war";
+    newNode->next = (*node)->next;
+    newNode->previous = *node;
+    (*node)->next = newNode;
+}
+
+//complete
 void print(NODE* node)
 {
+    while (node->previous != NULL)
+    {
+        node = node->previous;
+    }
+
     while (node != NULL)
     {
         cout << node->mOccasionTitle << endl;
@@ -109,12 +128,10 @@ int main()
 {
     NODE* node = new NODE;
 
-    node->next = NULL;
-    node->previous = NULL;
-
     node->mOccasionTitle = "Founding of Bulgaria";
 
     prependNode(&node);
+    appendNode(&node);
 
     print(node);
 
