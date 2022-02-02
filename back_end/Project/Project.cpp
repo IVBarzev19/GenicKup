@@ -35,21 +35,6 @@ NODE* takeInput()
 }
 
 //working
-void print(NODE* node)
-{
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
-
-    while (node != NULL)
-    {
-        cout << node->mOccasionTitle << " - " << node->mEra << endl;
-        node = node->next;
-    }
-}
-
-//working
 string convertToLower(string str)
 {
     for (size_t i = 0; i < str.size(); i++)
@@ -57,6 +42,36 @@ string convertToLower(string str)
         str[i] = tolower(str[i]);
     }
     return str;
+}
+
+//working
+void navigateToBegining(NODE** node)
+{
+    while ((*node)->prev != NULL && *node != NULL)
+    {
+        *node = (*node)->prev;
+    }
+}
+
+//working
+void navigateToEnd(NODE** node)
+{
+    while ((*node)->next != NULL)
+    {
+        *node = (*node)->next;
+    }
+}
+
+//working
+void print(NODE* node)
+{
+    navigateToBegining(&node);
+
+    while (node != NULL)
+    {
+        cout << node->mOccasionTitle << endl;
+        node = node->next;
+    }
 }
 
 //working
@@ -94,10 +109,7 @@ void assignEra(NODE* node)
 //working
 void assignAllEras(NODE* node)
 {
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
+    navigateToBegining(&node);
 
     while (node != NULL)
     {
@@ -129,10 +141,7 @@ void assignTag(NODE* node)
 //working
 void assignAllTags(NODE* node)
 {
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
+    navigateToBegining(&node);
 
     while (node != NULL)
     {
@@ -144,38 +153,35 @@ void assignAllTags(NODE* node)
 //working
 void prependNode(NODE** node)
 {
+    navigateToBegining(node);
     NODE* newNode = new NODE;
     newNode = takeInput();
     newNode->next = *node;
-    newNode->prev = (*node)->prev;
+    newNode->prev = NULL;
     (*node)->prev = newNode;
-    *node = newNode;
+    navigateToBegining(node);
 }
 
 //working
 void appendNode(NODE** node)
 {
-    while ((*node)->next != NULL)
-    {
-        (*node) = (*node)->next;
-    }
+    navigateToEnd(node);
+
     NODE* newNode = new NODE;
-    newNode->mOccasionTitle = "The priest died";
-    //newNode = takeInput();
-    newNode->next = (*node)->next;
+    newNode = takeInput();
+    newNode->next = NULL;
     newNode->prev = *node;
     (*node)->next = newNode;
+
+    navigateToBegining(node);
 }
 
 //working
 void deleteAllNodes(NODE** node)
 {
-    while ((*node)->prev != NULL)
-    {
-        *node = (*node)->prev;
-    }
+    navigateToBegining(node);
 
-    while ((*node)->next != NULL)
+    while ((*node)->next != NULL && (*node)->prev != NULL)
     {
         *node = (*node)->next;
         delete ((*node)->prev);
@@ -186,10 +192,7 @@ void deleteAllNodes(NODE** node)
 //working
 void searchByTag(NODE* node, string sTag)
 {
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
+    navigateToBegining(&node);
 
     while (node != NULL)
     {
@@ -206,10 +209,7 @@ void searchByTag(NODE* node, string sTag)
 //working
 void searchByEra(NODE* node, string sEra)
 {
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
+    navigateToBegining(&node);
 
     while (node != NULL)
     {
@@ -223,62 +223,69 @@ void searchByEra(NODE* node, string sEra)
     }
 }
 
+//there must be a problem with the next pointer
+void deleteNode(NODE** node, string sTitle)
+{
+    navigateToBegining(node);
+
+    while (node != NULL)
+    {
+        if (convertToLower((*node)->mOccasionTitle).find(convertToLower(sTitle)) != string::npos)
+        {
+            cout << endl << "Deleting node '" << (*node)->mOccasionTitle << "'" << endl;
+
+            if ((*node)->prev != NULL && (*node)->next != NULL)
+            {
+                *node = (*node)->prev;
+                (*node)->next = (*node)->next->next;
+                delete (*node)->next;
+                (*node)->next->prev = *node;
+                return;
+            }
+            else if ((*node)->prev == NULL && (*node)->next != NULL)
+            {
+                *node = (*node)->next;
+                delete (*node)->prev;
+                (*node)->prev = NULL;
+                return;
+            }
+            else if ((*node)->prev != NULL && (*node)->next == NULL)
+            {
+                *node = (*node)->prev;
+                delete (*node)->next;
+                (*node)->next = NULL;
+                return;
+            }
+            else
+            {
+                delete node;
+            }
+        }
+        *node = (*node)->next;
+    }
+}
+
 //void addByDate()
 
 //void editNode
 
 //void search
 
-//incomplete - does not delete, only notes down the node
-void deleteNode(NODE* node, string sTitle)
-{
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
-
-    while (node != NULL)
-    {
-        if (convertToLower(node->mOccasionTitle).find(convertToLower(sTitle)) != string::npos)
-        {
-            cout << endl << "Deleting node '" << node->mOccasionTitle << "'" << endl;
-
-            if (node->prev != NULL)
-            {
-                node->prev->next = node->next;
-            }
-            else
-            {
-                node->next->prev = NULL;
-            }
-            
-            if (node->next != NULL)
-            {
-                node->next->prev = node->prev;
-            }
-            else
-            {
-                node->prev->next = NULL;
-            }
-            break;
-        }
-        node = node->next;
-    }
-
-}
-
 int main()
 {
-    NODE* node = new NODE;
+    NODE* Head = new NODE;
 
-    node = takeInput();
+    Head = takeInput();
 
-    prependNode(&node);
-    appendNode(&node);
+    appendNode(&Head);
+    appendNode(&Head);
+    appendNode(&Head);
 
-    deleteNode(node, "The conquer of Constantinople");
+    deleteNode(&Head, "Pedal");
+    
+    navigateToBegining(&Head);
 
-    print(node);
+    print(Head);
 
-    deleteAllNodes(&node);
+    deleteAllNodes(&Head);
 }
