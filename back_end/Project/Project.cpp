@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
+#include <Windows.h>
 using namespace std;
 
 struct NODE
 {
-    string mOccasionTitle;
-    string mOccasionDescription;
-    string mTags;
-    string mEra;
+    string mOccasionTitle = "*Title*";
+    string mOccasionDescription = "*Description*";
+    string mTags = "*Tags*";
+    string mEra = "*Era*";
     short int mOccasionYear = 0;
     unsigned short int mOccasionMonth = 0;
     unsigned short int mOccasionDay = 0;
@@ -25,13 +26,38 @@ string convertToLower(string str)
     return str;
 }
 
-//incomplete
+//complete
+void assignEra(NODE* node)
+{
+    if (node->mOccasionYear < -1200)
+    {
+        node->mEra = "Prehistory";
+    }
+    else if (node->mOccasionYear < 600)
+    {
+        node->mEra = "Classical era";
+    }
+    else if (node->mOccasionYear < 1500)
+    {
+        node->mEra = "Middle ages";
+    }
+    else if (node->mOccasionYear < 1815)
+    {
+        node->mEra = "Early modern era";
+    }
+    else
+    {
+        node->mEra = "Modern era";
+    }
+}
+
+//incomplete - getline bug
 void takeInput(NODE* node)
 {
   cout << "Title: ";
-  cin >> node->mOccasionTitle;
+  getline(cin, node->mOccasionTitle);
   cout << "Description: ";
-  cin >> node->mOccasionDescription;
+  getline(cin, node->mOccasionDescription);
   cout << "Year: ";
   cin >> node->mOccasionYear;
   cout << "Month (with numbers): ";
@@ -40,32 +66,7 @@ void takeInput(NODE* node)
   cin >> node->mOccasionDay;
 }
 
-//complete
-void assignEra(NODE* node)
-{
-  if (node->mOccasionYear < -1200)
-  {
-      node->mEra = "Prehistory";
-  }
-  else if (node->mOccasionYear < 600)
-  {
-      node->mEra = "Classical era";
-  }
-  else if (node->mOccasionYear < 1500)
-  {
-      node->mEra = "Middle ages";
-  }
-  else if (node->mOccasionYear < 1815)
-  {
-      node->mEra = "Early modern era";
-  }
-  else 
-  {
-      node->mEra = "Modern era";
-  }
-}
-
-//incomplete
+//incomplete - must add more tags
 void assignTags(NODE* node)
 {
     if (convertToLower(node->mOccasionTitle).find("conquer") != string::npos ||
@@ -83,22 +84,23 @@ void assignTags(NODE* node)
     }
 }
 
-//incomplete
+//incomplete - must add previous
 void prependNode(NODE** node)
 {
     NODE* newNode = new NODE;
+    newNode->mOccasionTitle = "The fall of Constantinople";
     newNode->next = *node;
     newNode->previous = NULL;
-    //node->previous = *newNode;
+    (*node)->previous = newNode;
     *node = newNode;
 }
 
 //used for testing
-void printAllNodes(NODE* node)
+void print(NODE* node)
 {
-    while(node->next != NULL)
+    while (node != NULL)
     {
-        cout << node->mOccasionYear << endl;
+        cout << node->mOccasionTitle << endl;
         node = node->next;
     }
 }
@@ -107,8 +109,14 @@ int main()
 {
     NODE* node = new NODE;
 
-    printAllNodes(node);
+    node->next = NULL;
+    node->previous = NULL;
 
+    node->mOccasionTitle = "Founding of Bulgaria";
+
+    prependNode(&node);
+
+    print(node);
 
     delete node;
 }
