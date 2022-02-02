@@ -4,10 +4,10 @@ using namespace std;
 
 struct NODE
 {
-    string mOccasionTitle = "*Title*";
-    string mOccasionDescription = "*Description*";
-    string mTags = "*Tags*";
-    string mEra = "*Era*";
+    string mOccasionTitle = "Title not set";
+    string mOccasionDescription = "Description not set";
+    string mTag = "Tag not set";
+    string mEra = "Era not set";
     short int mOccasionYear = 0;
     unsigned short int mOccasionMonth = 0;
     unsigned short int mOccasionDay = 0;
@@ -15,7 +15,7 @@ struct NODE
     NODE* prev = NULL;
 };
 
-//complete
+//working
 string convertToLower(string str)
 {
     for (size_t i = 0; i < str.size(); i++)
@@ -25,7 +25,7 @@ string convertToLower(string str)
     return str;
 }
 
-//complete
+//working
 void assignEra(NODE* node)
 {
     if (node->mOccasionYear < -1200)
@@ -50,7 +50,7 @@ void assignEra(NODE* node)
     }
 }
 
-//incomplete - getline bug =>-----------------------------------------------?------------------------------------------<=
+//not working - getline bug =>-----------------------------------------------?------------------------------------------<=
 NODE* takeInput()
 {
     NODE* node = new NODE;
@@ -67,7 +67,7 @@ NODE* takeInput()
     return node;
 }
 
-//incomplete - must add more tags =>----------------------------------------?------------------------------------------<=
+//not working - must add more tags =>----------------------------------------?------------------------------------------<=
 void assignTags(NODE* node)
 {
     if (convertToLower(node->mOccasionTitle).find("conquer") != string::npos ||
@@ -75,17 +75,34 @@ void assignTags(NODE* node)
         convertToLower(node->mOccasionTitle).find("fought") != string::npos ||
         convertToLower(node->mOccasionTitle).find("siege") != string::npos)
     {
-        node->mTags = "battle";
+        node->mTag = "battle";
     }
 
     if (convertToLower(node->mOccasionTitle).find("contract") != string::npos ||
         convertToLower(node->mOccasionTitle).find("sign") != string::npos)
     {
-        node->mTags = "contract";
+        node->mTag = "contract";
+    }
+    
+    //revolution tag!
+}
+
+//working
+void assignAllTags(NODE* node)
+{
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+    }
+
+    while (node != NULL)
+    {
+        assignTags(node);
+        node = node->next;
     }
 }
 
-//complete
+//working
 void prependNode(NODE** node)
 {
     NODE* newNode = new NODE;
@@ -96,7 +113,7 @@ void prependNode(NODE** node)
     *node = newNode;
 }
 
-//complete
+//working
 void appendNode(NODE** node)
 {
     while ((*node)->next != NULL)
@@ -105,14 +122,13 @@ void appendNode(NODE** node)
     }
     NODE* newNode = new NODE;
     newNode->mOccasionTitle = "The priest died";
-    newNode->mTags = "battle";
     //newNode = takeInput();
     newNode->next = (*node)->next;
     newNode->prev = *node;
     (*node)->next = newNode;
 }
 
-//complete
+//working
 void print(NODE* node)
 {
     while (node->prev != NULL)
@@ -122,12 +138,12 @@ void print(NODE* node)
 
     while (node != NULL)
     {
-        cout << node->mOccasionTitle << endl;
+        cout << node->mOccasionTitle << " - " << node->mTag << endl;
         node = node->next;
     }
 }
 
-//complete
+//working
 void deleteAllNodes(NODE** node)
 {
     while ((*node)->prev != NULL)
@@ -143,14 +159,7 @@ void deleteAllNodes(NODE** node)
     delete* node;
 }
 
-//void addByDate()
-
-//void editNode
-
-//void search
-
-//void deleteNode
-
+//working
 void searchNode(NODE* node, string sTag)
 {
     while (node->prev != NULL)
@@ -160,7 +169,7 @@ void searchNode(NODE* node, string sTag)
 
     while (node != NULL)
     {
-        if (node->mTags.find(sTag) != string::npos)
+        if (node->mTag.find(sTag) != string::npos)
         {
             cout << endl << "A node with this tag was found : ";
             cout << node->mOccasionTitle << endl;
@@ -169,6 +178,14 @@ void searchNode(NODE* node, string sTag)
         node = node->next;
     }
 }
+
+//void addByDate()
+
+//void editNode
+
+//void search
+
+//void deleteNode
 
 int main()
 {
@@ -179,10 +196,9 @@ int main()
     prependNode(&node);
     appendNode(&node);
 
-    cout << endl;
-    print(node);
+    assignAllTags(node);
 
-    searchNode(node, "battle");
+    print(node);
 
     deleteAllNodes(&node);
 }
