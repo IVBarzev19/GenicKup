@@ -16,6 +16,40 @@ struct NODE
 };
 
 //working
+NODE* takeInput()
+{
+    NODE* node = new NODE;
+    cout << "Title: ";
+    cin >> ws;
+    getline(cin, node->mOccasionTitle);
+    cout << "Description: ";
+    cin >> ws;
+    getline(cin, node->mOccasionDescription);
+    cout << "Year: ";
+    cin >> node->mOccasionYear;
+    cout << "Month (with numbers): ";
+    cin >> node->mOccasionMonth;
+    cout << "Day (with numbers): ";
+    cin >> node->mOccasionDay;
+    return node;
+}
+
+//working
+void print(NODE* node)
+{
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+    }
+
+    while (node != NULL)
+    {
+        cout << node->mOccasionTitle << " - " << node->mEra << endl;
+        node = node->next;
+    }
+}
+
+//working
 string convertToLower(string str)
 {
     for (size_t i = 0; i < str.size(); i++)
@@ -28,47 +62,52 @@ string convertToLower(string str)
 //working
 void assignEra(NODE* node)
 {
-    if (node->mOccasionYear < -1200)
+    if (node->mOccasionYear != 0)
     {
-        node->mEra = "Prehistory";
-    }
-    else if (node->mOccasionYear < 600)
-    {
-        node->mEra = "Classical era";
-    }
-    else if (node->mOccasionYear < 1500)
-    {
-        node->mEra = "Middle ages";
-    }
-    else if (node->mOccasionYear < 1815)
-    {
-        node->mEra = "Early modern era";
+        if (node->mOccasionYear < -1200)
+        {
+            node->mEra = "Prehistory";
+        }
+        else if (node->mOccasionYear < 600)
+        {
+            node->mEra = "Classical era";
+        }
+        else if (node->mOccasionYear < 1500)
+        {
+            node->mEra = "Middle ages";
+        }
+        else if (node->mOccasionYear < 1815)
+        {
+            node->mEra = "Early modern era";
+        }
+        else
+        {
+            node->mEra = "Modern era";
+        }
     }
     else
     {
-        node->mEra = "Modern era";
+        node->mEra = "Era not set";
     }
 }
 
-//not working - getline bug =>-----------------------------------------------?------------------------------------------<=
-NODE* takeInput()
+//working
+void assignAllEras(NODE* node)
 {
-    NODE* node = new NODE;
-    cout << "Title: ";
-    getline(cin, node->mOccasionTitle);
-    cout << "Description: ";
-    getline(cin, node->mOccasionDescription);
-    cout << "Year: ";
-    cin >> node->mOccasionYear;
-    cout << "Month (with numbers): ";
-    cin >> node->mOccasionMonth;
-    cout << "Day (with numbers): ";
-    cin >> node->mOccasionDay;
-    return node;
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+    }
+
+    while (node != NULL)
+    {
+        assignEra(node);
+        node = node->next;
+    }
 }
 
 //not working - must add more tags =>----------------------------------------?------------------------------------------<=
-void assignTags(NODE* node)
+void assignTag(NODE* node)
 {
     if (convertToLower(node->mOccasionTitle).find("conquer") != string::npos ||
         convertToLower(node->mOccasionTitle).find("battle") != string::npos ||
@@ -97,7 +136,7 @@ void assignAllTags(NODE* node)
 
     while (node != NULL)
     {
-        assignTags(node);
+        assignTag(node);
         node = node->next;
     }
 }
@@ -129,21 +168,6 @@ void appendNode(NODE** node)
 }
 
 //working
-void print(NODE* node)
-{
-    while (node->prev != NULL)
-    {
-        node = node->prev;
-    }
-
-    while (node != NULL)
-    {
-        cout << node->mOccasionTitle << " - " << node->mTag << endl;
-        node = node->next;
-    }
-}
-
-//working
 void deleteAllNodes(NODE** node)
 {
     while ((*node)->prev != NULL)
@@ -160,7 +184,7 @@ void deleteAllNodes(NODE** node)
 }
 
 //working
-void searchNode(NODE* node, string sTag)
+void searchByTag(NODE* node, string sTag)
 {
     while (node->prev != NULL)
     {
@@ -172,6 +196,26 @@ void searchNode(NODE* node, string sTag)
         if (node->mTag.find(sTag) != string::npos)
         {
             cout << endl << "A node with this tag was found : ";
+            cout << node->mOccasionTitle << endl;
+            break;
+        }
+        node = node->next;
+    }
+}
+
+//working
+void searchByEra(NODE* node, string sEra)
+{
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+    }
+
+    while (node != NULL)
+    {
+        if (convertToLower(node->mEra).find(convertToLower(sEra)) != string::npos)
+        {
+            cout << endl << "A node from this era was found : ";
             cout << node->mOccasionTitle << endl;
             break;
         }
@@ -191,12 +235,14 @@ int main()
 {
     NODE* node = new NODE;
 
-    node->mOccasionTitle = "Founding of Bulgaria";
+    node = takeInput();
 
     prependNode(&node);
     appendNode(&node);
 
-    assignAllTags(node);
+    assignAllEras(node);
+
+    searchByEra(node, "Middle ages");
 
     print(node);
 
