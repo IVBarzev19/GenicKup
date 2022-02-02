@@ -13,7 +13,7 @@ struct NODE
     unsigned short int mOccasionMonth = 0;
     unsigned short int mOccasionDay = 0;
     NODE* next = NULL;
-    NODE* previous = NULL;
+    NODE* prev = NULL;
 };
 
 //complete
@@ -90,8 +90,8 @@ void prependNode(NODE** node)
     NODE* newNode = new NODE;
     newNode->mOccasionTitle = "The fall of Constantinople";
     newNode->next = *node;
-    newNode->previous = (*node)->previous;
-    (*node)->previous = newNode;
+    newNode->prev = (*node)->prev;
+    (*node)->prev = newNode;
     *node = newNode;
 }
 
@@ -105,16 +105,16 @@ void appendNode(NODE** node)
     NODE* newNode = new NODE;
     newNode->mOccasionTitle = "The 1-hundred years war";
     newNode->next = (*node)->next;
-    newNode->previous = *node;
+    newNode->prev = *node;
     (*node)->next = newNode;
 }
 
 //complete
 void print(NODE* node)
 {
-    while (node->previous != NULL)
+    while (node->prev != NULL)
     {
-        node = node->previous;
+        node = node->prev;
     }
 
     while (node != NULL)
@@ -122,6 +122,32 @@ void print(NODE* node)
         cout << node->mOccasionTitle << endl;
         node = node->next;
     }
+}
+
+//void addByDate()
+
+//void editNode
+
+//void search
+
+//void deleteNode
+
+//complete
+void deleteAllNodes(NODE** node)
+{
+    while ((*node)->prev != NULL)
+    {
+        *node = (*node)->prev;
+    }
+
+    while ((*node)->next != NULL)
+    {
+        *node = (*node)->next;
+        cout << "Deleting ..." << endl;
+        delete ((*node)->prev);
+    }
+    cout << "Deleting ..." << endl;
+    delete* node;
 }
 
 int main()
@@ -135,7 +161,7 @@ int main()
 
     print(node);
 
-    delete node;
+    deleteAllNodes(&node);
 }
 
 
