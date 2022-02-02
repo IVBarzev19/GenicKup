@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <Windows.h>
 using namespace std;
 
 struct NODE
@@ -51,22 +50,24 @@ void assignEra(NODE* node)
     }
 }
 
-//incomplete - getline bug
-void takeInput(NODE* node)
+//incomplete - getline bug =>-----------------------------------------------?------------------------------------------<=
+NODE* takeInput()
 {
-  cout << "Title: ";
-  getline(cin, node->mOccasionTitle);
-  cout << "Description: ";
-  getline(cin, node->mOccasionDescription);
-  cout << "Year: ";
-  cin >> node->mOccasionYear;
-  cout << "Month (with numbers): ";
-  cin >> node->mOccasionMonth;
-  cout << "Day (with numbers): ";
-  cin >> node->mOccasionDay;
+    NODE* node = new NODE;
+    cout << "Title: ";
+    getline(cin, node->mOccasionTitle);
+    cout << "Description: ";
+    getline(cin, node->mOccasionDescription);
+    cout << "Year: ";
+    cin >> node->mOccasionYear;
+    cout << "Month (with numbers): ";
+    cin >> node->mOccasionMonth;
+    cout << "Day (with numbers): ";
+    cin >> node->mOccasionDay;
+    return node;
 }
 
-//incomplete - must add more tags
+//incomplete - must add more tags =>----------------------------------------?------------------------------------------<=
 void assignTags(NODE* node)
 {
     if (convertToLower(node->mOccasionTitle).find("conquer") != string::npos ||
@@ -88,7 +89,7 @@ void assignTags(NODE* node)
 void prependNode(NODE** node)
 {
     NODE* newNode = new NODE;
-    newNode->mOccasionTitle = "The fall of Constantinople";
+    newNode = takeInput();
     newNode->next = *node;
     newNode->prev = (*node)->prev;
     (*node)->prev = newNode;
@@ -103,7 +104,9 @@ void appendNode(NODE** node)
         (*node) = (*node)->next;
     }
     NODE* newNode = new NODE;
-    newNode->mOccasionTitle = "The 1-hundred years war";
+    newNode->mOccasionTitle = "The priest died";
+    newNode->mTags = "battle";
+    //newNode = takeInput();
     newNode->next = (*node)->next;
     newNode->prev = *node;
     (*node)->next = newNode;
@@ -124,14 +127,6 @@ void print(NODE* node)
     }
 }
 
-//void addByDate()
-
-//void editNode
-
-//void search
-
-//void deleteNode
-
 //complete
 void deleteAllNodes(NODE** node)
 {
@@ -143,11 +138,36 @@ void deleteAllNodes(NODE** node)
     while ((*node)->next != NULL)
     {
         *node = (*node)->next;
-        cout << "Deleting ..." << endl;
         delete ((*node)->prev);
     }
-    cout << "Deleting ..." << endl;
     delete* node;
+}
+
+//void addByDate()
+
+//void editNode
+
+//void search
+
+//void deleteNode
+
+void searchNode(NODE* node, string sTag)
+{
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+    }
+
+    while (node != NULL)
+    {
+        if (node->mTags.find(sTag) != string::npos)
+        {
+            cout << endl << "A node with this tag was found : ";
+            cout << node->mOccasionTitle << endl;
+            break;
+        }
+        node = node->next;
+    }
 }
 
 int main()
@@ -159,83 +179,10 @@ int main()
     prependNode(&node);
     appendNode(&node);
 
+    cout << endl;
     print(node);
+
+    searchNode(node, "battle");
 
     deleteAllNodes(&node);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-void addLastElement(NODE* node)
-{
-  while(node->next != NULL)
-  {
-    node = node->next;
-  }
-
-  takeInput(node);
-}
-
-void addElementByDate(NODE* node)
-{
-  NODE* newNode = new NODE;
-  while(node->previous != NULL)
-  {
-    node = node->previous;
-  }
-
-  if(node->occasionYear > newNode->occasionYear)
-  {
-    //doShuff;
-  }
-}
-
-void search(NODE* node, int year = -9999, int month = 0, int day = 0)
-{
-  while(node->previous != NULL)
-  {
-    node = node->previous;
-  }
-
-  //doStuff;
-}
-
-void eraseElement()
-{
-  //find matching criteria and delete();
-}
-
-*/
