@@ -1,0 +1,15 @@
+﻿  Menu.cpp
+  sfml_app.cpp
+C:\Users\aaboz\Desktop\MENU3\sfml_app.cpp(10,50): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\aaboz\Desktop\MENU3\sfml_app.cpp(10,30): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  Generating Code...
+  LINK : C:\Users\aaboz\Desktop\MENU3\x64\Debug\MENU3.exe not found or not built by the last incremental link; performing full link
+  MENU3.vcxproj -> C:\Users\aaboz\Desktop\MENU3\x64\Debug\MENU3.exe
