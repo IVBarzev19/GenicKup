@@ -277,22 +277,33 @@ void searchByEra(NODE* node, string sEra)
     }
 }
 
-//create sorting function
-/*void sortNodes(NODE** node)
+//working
+void sortNodes(NODE** node)
 {
-    navigateToBegining(node);
-    
     for (int i = 0; i < countNodes(*node); i++)
     {
+        navigateToBegining(node);
         for (int j = 0; j < countNodes(*node) - i - 1; j++)
         {
+            if ((*node)->next == NULL)
+            {
+                break;
+            }
             if ((*node)->mOccasionYear > (*node)->next->mOccasionYear)
             {
-                
+                swapNodes(node, &(*node)->next);
             }
+            else if ((*node)->mOccasionYear == (*node)->next->mOccasionYear)
+            {
+                if ((*node)->mOccasionMonth > (*node)->next->mOccasionMonth)
+                {
+                    swapNodes(node, &(*node)->next);
+                }
+            }
+            *node = (*node)->next;
         }
     }
-}*/
+}
 
 //void deleteNode()
 
@@ -305,6 +316,22 @@ void searchByEra(NODE* node, string sEra)
 int main()
 {
     NODE* Head = new NODE;
+
+    Head = takeInput();
+    appendNode(&Head);
+    appendNode(&Head);
+
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    printAllNodes(Head);
+
+    sortNodes(&Head);
+
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    printAllNodes(Head);
 
     deleteAllNodes(&Head);
 }
