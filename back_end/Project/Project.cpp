@@ -63,7 +63,21 @@ void navigateToEnd(NODE** node)
 }
 
 //working
-void print(NODE* node)
+int countNodes(NODE* node)
+{
+    navigateToBegining(&node);
+    int i;
+
+    for (i = 1; node->next != NULL; i++)
+    {
+        node = node->next;
+    }
+
+    return i;
+}
+
+//working
+void printAllTitles(NODE* node)
 {
     navigateToBegining(&node);
 
@@ -124,7 +138,8 @@ void assignTag(NODE* node)
     if (convertToLower(node->mOccasionTitle).find("conquer") != string::npos ||
         convertToLower(node->mOccasionTitle).find("battle") != string::npos ||
         convertToLower(node->mOccasionTitle).find("fought") != string::npos ||
-        convertToLower(node->mOccasionTitle).find("siege") != string::npos)
+        convertToLower(node->mOccasionTitle).find("siege") != string::npos ||
+        convertToLower(node->mOccasionTitle).find("defeat") != string::npos)
     {
         node->mTag = "battle";
     }
@@ -135,7 +150,7 @@ void assignTag(NODE* node)
         node->mTag = "contract";
     }
     
-    //revolution tag!
+    //uprising tag!
 }
 
 //working
@@ -223,69 +238,31 @@ void searchByEra(NODE* node, string sEra)
     }
 }
 
-//there must be a problem with the next pointer
-void deleteNode(NODE** node, string sTitle)
+//create sorting function
+void sortNodes(NODE** node)
 {
     navigateToBegining(node);
-
-    while (node != NULL)
+    NODE tempNode = **node;
+    
+    for (int i = 0; i < countNodes(*node); i++)
     {
-        if (convertToLower((*node)->mOccasionTitle).find(convertToLower(sTitle)) != string::npos)
-        {
-            cout << endl << "Deleting node '" << (*node)->mOccasionTitle << "'" << endl;
 
-            if ((*node)->prev != NULL && (*node)->next != NULL)
-            {
-                *node = (*node)->prev;
-                (*node)->next = (*node)->next->next;
-                delete (*node)->next;
-                (*node)->next->prev = *node;
-                return;
-            }
-            else if ((*node)->prev == NULL && (*node)->next != NULL)
-            {
-                *node = (*node)->next;
-                delete (*node)->prev;
-                (*node)->prev = NULL;
-                return;
-            }
-            else if ((*node)->prev != NULL && (*node)->next == NULL)
-            {
-                *node = (*node)->prev;
-                delete (*node)->next;
-                (*node)->next = NULL;
-                return;
-            }
-            else
-            {
-                delete node;
-            }
-        }
-        *node = (*node)->next;
     }
 }
 
+//void deleteNode()
+
 //void addByDate()
 
-//void editNode
+//void editNode()
 
-//void search
+//void search()
 
 int main()
 {
     NODE* Head = new NODE;
 
     Head = takeInput();
-
-    appendNode(&Head);
-    appendNode(&Head);
-    appendNode(&Head);
-
-    deleteNode(&Head, "Pedal");
-    
-    navigateToBegining(&Head);
-
-    print(Head);
 
     deleteAllNodes(&Head);
 }
