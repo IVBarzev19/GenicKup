@@ -112,6 +112,8 @@ void printAllNodes(NODE* node)
 		cout << "Year: " << node->mOccasionYear << endl;
 		cout << "Month: " << node->mOccasionMonth << endl;
 		cout << "Day: " << node->mOccasionDay << endl;
+		cout << "Tag: " << node->mTag << endl;
+		cout << "Era: " << node->mEra << endl;
 		cout << endl;
 		node = node->next;
 	}
@@ -170,18 +172,40 @@ void assignTag(NODE* node)
 	{
 		node->mTag = "battle";
 	}
-	else if (convertToLower(node->mOccasionTitle).find("contract") != string::npos ||
+	else 
+	if (convertToLower(node->mOccasionTitle).find("contract") != string::npos ||
 		convertToLower(node->mOccasionTitle).find("sign") != string::npos)
 	{
 		node->mTag = "contract";
 	}
-	else if (convertToLower(node->mOccasionTitle).find("uprising") != string::npos ||
+	else 
+	if (convertToLower(node->mOccasionTitle).find("uprising") != string::npos ||
 		convertToLower(node->mOccasionTitle).find("rose") != string::npos ||
 		convertToLower(node->mOccasionTitle).find("rise") != string::npos ||
 		convertToLower(node->mOccasionTitle).find("uprising") != string::npos)
 	{
 		node->mTag = "uprising";
 	}
+	else
+	{
+		cout << "Program was unable to set tag automatically, please do so manually..." << endl;
+		cout << "Tag: ";
+		cin >> node->mTag;
+	}
+}
+
+void checkNotSetTags(NODE* node)
+{
+	navigateToBegining(&node);
+
+	while (node != NULL)
+	{
+		if (node->mTag == "Tag not set")
+		{
+			cout << "Program was unable to set tag automatically..." << endl;
+		}
+	}
+
 }
 
 void assignAllTags(NODE* node)
@@ -193,6 +217,8 @@ void assignAllTags(NODE* node)
 		assignTag(node);
 		node = node->next;
 	}
+
+
 }
 
 void prependNode(NODE** node)
@@ -299,6 +325,11 @@ int main()
 	NODE* Head = new NODE;
 
 	Head = takeInput();
+
+	assignAllTags(Head);
+	assignAllEras(Head);
+
+	printAllNodes(Head);
 
 	deleteAllNodes(&Head);
 }
