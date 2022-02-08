@@ -77,13 +77,52 @@ int countNodes(NODE* node)
 }
 
 //working
-void printAllTitles(NODE* node)
+void swapStrings(string &str, string &str2)
+{
+    string temp = str;
+    str = str2;
+    str2 = temp;
+}
+
+//working
+void swapInts(short int& a, short int& b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+//working
+void swapInts(unsigned short int& a, unsigned short int& b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+//working
+void swapNodes(NODE** fNode, NODE** sNode)
+{
+    swapStrings((*fNode)->mOccasionTitle, (*sNode)->mOccasionTitle);
+    swapStrings((*fNode)->mOccasionDescription, (*sNode)->mOccasionDescription);
+    swapInts((*fNode)->mOccasionYear, (*sNode)->mOccasionYear);
+    swapInts((*fNode)->mOccasionMonth, (*sNode)->mOccasionMonth);
+    swapInts((*fNode)->mOccasionDay, (*sNode)->mOccasionDay);
+}
+
+//working
+void printAllNodes(NODE* node)
 {
     navigateToBegining(&node);
 
     while (node != NULL)
     {
-        cout << node->mOccasionTitle << endl;
+        cout << "Title: " << node->mOccasionTitle << endl;
+        cout << "Description: " << node->mOccasionDescription << endl;
+        cout << "Year: " << node->mOccasionYear << endl;
+        cout << "Month: " << node->mOccasionMonth << endl;
+        cout << "Day: " << node->mOccasionDay << endl;
+        cout << endl;
         node = node->next;
     }
 }
@@ -239,16 +278,21 @@ void searchByEra(NODE* node, string sEra)
 }
 
 //create sorting function
-void sortNodes(NODE** node)
+/*void sortNodes(NODE** node)
 {
     navigateToBegining(node);
-    NODE tempNode = **node;
     
     for (int i = 0; i < countNodes(*node); i++)
     {
-
+        for (int j = 0; j < countNodes(*node) - i - 1; j++)
+        {
+            if ((*node)->mOccasionYear > (*node)->next->mOccasionYear)
+            {
+                
+            }
+        }
     }
-}
+}*/
 
 //void deleteNode()
 
@@ -261,8 +305,6 @@ void sortNodes(NODE** node)
 int main()
 {
     NODE* Head = new NODE;
-
-    Head = takeInput();
 
     deleteAllNodes(&Head);
 }
