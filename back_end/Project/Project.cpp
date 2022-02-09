@@ -13,6 +13,17 @@ int main()
 
 	assignAllTags(Head);
 	assignAllEras(Head);
+	
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+
+	cout << countNodes(Head);
+
+	cout << endl;
+
+	printAllNodes(Head);
 
 	deleteAllNodes(&Head);
 }

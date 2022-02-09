@@ -18,6 +18,9 @@
     <ClCompile Include="Project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="back-end-functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="back-end-functions.h">

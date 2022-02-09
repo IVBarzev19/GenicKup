@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="back-end-functions.cpp" />
     <ClCompile Include="Project.cpp" />
   </ItemGroup>
   <ItemGroup>
