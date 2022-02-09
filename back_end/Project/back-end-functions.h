@@ -70,7 +70,7 @@ int countNodes(NODE* node)
 	navigateToBegining(&node);
 	int i;
 
-	for (i = 1; node->next != NULL; i++)
+	for (i = 0; node != NULL; i++)
 	{
 		node = node->next;
 	}
@@ -151,10 +151,6 @@ void assignEra(NODE* node)
 			node->mEra = "Modern era";
 		}
 	}
-	else
-	{
-		node->mEra = "Era not set";
-	}
 }
 
 void assignAllEras(NODE* node)
@@ -168,7 +164,7 @@ void assignAllEras(NODE* node)
 	}
 }
 
-//not working - must add more tags =>----------------------------------------?------------------------------------------<=
+//not complete - must add more tags =>----------------------------------------?------------------------------------------<=
 void assignTag(NODE* node)
 {
 	if (convertToLower(node->mOccasionTitle).find("conquer") != string::npos ||
@@ -195,24 +191,10 @@ void assignTag(NODE* node)
 			}
 			else
 			{
-				cout << "Program was unable to set tag automatically, please do so manually..." << endl;
+				cout << "Program was unable to set tag automatically for occasion " << node->mOccasionTitle << ", please do so manually..." << endl;
 				cout << "Tag: ";
 				cin >> node->mTag;
 			}
-}
-
-void checkNotSetTags(NODE* node)
-{
-	navigateToBegining(&node);
-
-	while (node != NULL)
-	{
-		if (node->mTag == "Tag not set")
-		{
-			cout << "Program was unable to set tag automatically..." << endl;
-		}
-	}
-
 }
 
 void assignAllTags(NODE* node)
@@ -231,6 +213,7 @@ void assignAllTags(NODE* node)
 void prependNode(NODE** node)
 {
 	navigateToBegining(node);
+
 	NODE* newNode = new NODE;
 	newNode = takeInput();
 	newNode->next = *node;
