@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="Project.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="back-end-functions.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
