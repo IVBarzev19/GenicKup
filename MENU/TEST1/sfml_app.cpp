@@ -12,7 +12,7 @@ int main()
     Texture background;
     Sprite backgroundImage;
 
-    if (!background.loadFromFile("back.jpg"))
+    if (!background.loadFromFile("Images/back.jpg"))
         cout << "Error: Could not display Alaskan Wilderness image" << endl;
 
     backgroundImage.setTexture(background);
@@ -23,7 +23,7 @@ int main()
 
     Texture exitButton;
     Sprite exitButtonImage;
-    if (!exitButton.loadFromFile("exit.jpg"))
+    if (!exitButton.loadFromFile("Images/exit.jpg"))
         cout << "Can't find the image" << endl;
     exitButtonImage.setPosition(270,500);
 
@@ -34,7 +34,7 @@ int main()
 
     Texture searchButton;
     Sprite searchButtonImage;
-    if (!searchButton.loadFromFile("search.jpg"))
+    if (!searchButton.loadFromFile("Images/search.jpg"))
         cout << "Can't find the image" << endl;
     searchButtonImage.setPosition(240, 350);
 
@@ -44,7 +44,7 @@ int main()
 
     Texture addButton;
     Sprite addButtonImage;
-    if (!addButton.loadFromFile("add.jpg"))
+    if (!addButton.loadFromFile("Images/add.jpg"))
         cout << "Can't find the image" << endl;
     addButtonImage.setPosition(280, 200);
 
@@ -54,7 +54,7 @@ int main()
     addButtonImage.setTexture(addButton);
     Texture backButton;
     Sprite backButtonImage;
-    if (!backButton.loadFromFile("backBtn.jpg"))
+    if (!backButton.loadFromFile("Images/backBtn.jpg"))
         cout << "Can't find the image" << endl;
     backButtonImage.setPosition(50, 500);
 
@@ -64,7 +64,7 @@ int main()
 
     Texture exButton;
     Sprite exButtonImage;
-    if (!exButton.loadFromFile("exit1.jpg"))
+    if (!exButton.loadFromFile("Images/exit1.jpg"))
         cout << "Can't find the image" << endl;
     exButtonImage.setPosition(270, 500);
 
