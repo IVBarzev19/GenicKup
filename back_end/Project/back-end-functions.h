@@ -300,6 +300,13 @@ void sortNodesByDate(NODE** node)
 				{
 					swapNodes(node, &(*node)->next);
 				}
+				else if ((*node)->mOccasionMonth == (*node)->next->mOccasionMonth)
+				{
+					if ((*node)->mOccasionDay > (*node)->next->mOccasionDay)
+					{
+						swapNodes(node, &(*node)->next);
+					}
+				}
 			}
 			*node = (*node)->next;
 		}
