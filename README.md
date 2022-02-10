@@ -20,7 +20,6 @@
 - [About](#about)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
 - [Support](#support)
@@ -42,10 +41,6 @@
 > Visual Studio, GitHub, Paint net, Microsoft Office
 
 ## Getting Started
-
-### Prerequisites
-
-> We wanted to create an easy way of fidning historical information.
 
 ### Installation
 
