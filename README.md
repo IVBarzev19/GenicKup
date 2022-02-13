@@ -1,9 +1,8 @@
 <h1 align="center">
   <a href="https://github.com/IVBarzev19/GenicKup">
-    <img src="linkgoeshere" alt="Logo" width="340" height="100" alt="logo">
+    <img src="logo.png" alt="Logo" witdh="284" height="280" alt="logo">
   </a>
 </h1>
-
 <div align="center">
   GenicKup
 </div>
