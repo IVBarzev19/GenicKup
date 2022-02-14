@@ -8,7 +8,7 @@ int main()
 {
 	NODE* Head = new NODE;
 
-	Head->mOccasionTitle = "The conquer of Constantinople";
+	//Head = takeInput();
 	/*
 	Head = takeInput();
 	appendNode(&Head);
@@ -26,7 +26,7 @@ int main()
 	std::cout << std::endl;
 
 	printAllNodes(Head);*/
-	showDeleteMenuOptions(Head);
+
 
 	deleteAllNodes(&Head);
 
