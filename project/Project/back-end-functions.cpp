@@ -268,15 +268,23 @@ void searchByTag(NODE* node, std::string sTag)
 {
 	navigateToBegining(&node);
 
+	bool hasFound = false;
+
 	while (node != NULL)
 	{
 		if (node->mTag.find(sTag) != std::string::npos)
 		{
 			std::cout << std::endl << "A node with this tag was found : ";
 			printNode(node);
+			hasFound = true;
 			break;
 		}
 		node = node->next;
+	}
+	
+	if (!hasFound)
+	{
+		std::cout << "No such node was found!" << std::endl;
 	}
 }
 
@@ -284,15 +292,23 @@ void searchByEra(NODE* node, std::string sEra)
 {
 	navigateToBegining(&node);
 
+	bool hasFound = false;
+
 	while (node != NULL)
 	{
 		if (convertToLower(node->mEra).find(convertToLower(sEra)) != std::string::npos)
 		{
 			std::cout << std::endl << "A node from this era was found : ";
 			printNode(node);
+			hasFound = true;
 			break;
 		}
 		node = node->next;
+	}
+
+	if (!hasFound)
+	{
+		std::cout << "No such node was found!" << std::endl;
 	}
 }
 
@@ -300,14 +316,22 @@ void searchByTitle(NODE* node, std::string sTitle)
 {
 	navigateToBegining(&node);
 
+	bool hasFound = false;
+
 	while (node != NULL)
 	{
 		if (convertToLower(node->mOccasionTitle) == convertToLower(sTitle))
 		{
 			std::cout << std::endl << "A node with this title was found : " << std::endl;
 			printNode(node);
+			hasFound = true;
 			break;
 		}
 		node = node->next;
+	}
+
+	if (!hasFound)
+	{
+		std::cout << "No such node was found!" << std::endl;
 	}
 }
