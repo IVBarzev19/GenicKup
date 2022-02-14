@@ -6,8 +6,10 @@
 
 int main()
 {
-	/*NODE* Head = new NODE;
+	NODE* Head = new NODE;
 
+	Head->mOccasionTitle = "The conquer of Constantinople";
+	/*
 	Head = takeInput();
 	appendNode(&Head);
 
@@ -23,9 +25,10 @@ int main()
 
 	std::cout << std::endl;
 
-	printAllNodes(Head);
+	printAllNodes(Head);*/
 
-	deleteAllNodes(&Head);*/
+	showSearchMenuOptions(Head);
 
-	showSearchMenuOptions();
+	deleteAllNodes(&Head);
+
 }

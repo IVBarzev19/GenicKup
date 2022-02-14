@@ -120,20 +120,25 @@ void sortNodesByDate(NODE** node)
 	}
 }
 
+void printNode(NODE* node)
+{
+	std::cout << "Title: " << node->mOccasionTitle << std::endl;
+	std::cout << "Description: " << node->mOccasionDescription << std::endl;
+	std::cout << "Year: " << node->mOccasionYear << std::endl;
+	std::cout << "Month: " << node->mOccasionMonth << std::endl;
+	std::cout << "Day: " << node->mOccasionDay << std::endl;
+	std::cout << "Tag: " << node->mTag << std::endl;
+	std::cout << "Era: " << node->mEra << std::endl;
+	std::cout << std::endl;
+}
+
 void printAllNodes(NODE* node)
 {
 	navigateToBegining(&node);
 
 	while (node != NULL)
 	{
-		std::cout << "Title: " << node->mOccasionTitle << std::endl;
-		std::cout << "Description: " << node->mOccasionDescription << std::endl;
-		std::cout << "Year: " << node->mOccasionYear << std::endl;
-		std::cout << "Month: " << node->mOccasionMonth << std::endl;
-		std::cout << "Day: " << node->mOccasionDay << std::endl;
-		std::cout << "Tag: " << node->mTag << std::endl;
-		std::cout << "Era: " << node->mEra << std::endl;
-		std::cout << std::endl;
+		printNode(node);
 		node = node->next;
 	}
 }
@@ -268,7 +273,7 @@ void searchByTag(NODE* node, std::string sTag)
 		if (node->mTag.find(sTag) != std::string::npos)
 		{
 			std::cout << std::endl << "A node with this tag was found : ";
-			std::cout << node->mOccasionTitle << std::endl;
+			printNode(node);
 			break;
 		}
 		node = node->next;
@@ -284,7 +289,23 @@ void searchByEra(NODE* node, std::string sEra)
 		if (convertToLower(node->mEra).find(convertToLower(sEra)) != std::string::npos)
 		{
 			std::cout << std::endl << "A node from this era was found : ";
-			std::cout << node->mOccasionTitle << std::endl;
+			printNode(node);
+			break;
+		}
+		node = node->next;
+	}
+}
+
+void searchByTitle(NODE* node, std::string sTitle)
+{
+	navigateToBegining(&node);
+
+	while (node != NULL)
+	{
+		if (convertToLower(node->mOccasionTitle) == convertToLower(sTitle))
+		{
+			std::cout << std::endl << "A node with this title was found : " << std::endl;
+			printNode(node);
 			break;
 		}
 		node = node->next;

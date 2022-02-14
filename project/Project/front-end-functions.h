@@ -1,4 +1,8 @@
 #pragma once
 #include "back-end-functions.h"
 
-void showSearchMenuOptions();
+void getSearchByEraDetails(NODE* node);
+
+void getSearchByTagDetails(NODE* node);
+
+void showSearchMenuOptions(NODE* node);

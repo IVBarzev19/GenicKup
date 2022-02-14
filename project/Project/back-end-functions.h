@@ -36,6 +36,8 @@ void swapNodes(NODE** fNode, NODE** sNode);
 
 void sortNodesByDate(NODE** node);
 
+void printNode(NODE* node);
+
 void printAllNodes(NODE* node);
 
 void assignEra(NODE* node);
@@ -56,3 +58,5 @@ void deleteAllNodes(NODE** node);
 void searchByTag(NODE* node, std::string sTag);
 
 void searchByEra(NODE* node, std::string sEra);
+
+void searchByTitle(NODE* node, std::string sTitle);
