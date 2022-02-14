@@ -31,23 +31,83 @@ void showSearchMenuOptions(NODE* node)
 {
 	short int choice;
 	std::cout << "What are you searching for?" << std::endl;
-	std::cout << "A specific era, the occasion took place in (0)" << std::endl;
-	std::cout << "A specific tag, the occasion has           (1)" << std::endl;
-	std::cout << "The name of the specific occasion          (2)" << std::endl;
+	std::cout << "1. A specific era, the occasion took place in" << std::endl;
+	std::cout << "2. A specific tag, the occasion has" << std::endl;
+	std::cout << "3. The name of the specific occasion" << std::endl;
 	std::cin >> choice;
 	std::cout << "Great!" << std::endl;
 	switch (choice)
 	{
-	case 0:
+	case 1:
 		getSearchByEraDetails(node);
 		break;
 
-	case 1:
+	case 2:
 		getSearchByTagDetails(node);
 		break;
 
-	case 2:
+	case 3:
 		getSearchByTitleDetails(node);
+		break;
+	default:
+		std::cout << "Incorrect input!" << std::endl;
+		break;
+	}
+}
+
+void showDeleteMenuOptions(NODE* node)
+{
+	short int choice;
+	
+	std::cout << "Available delete-by functions:" << std::endl;
+	std::cout << "1. Delete by node title" << std::endl;
+	std::cout << "2. Delete by node year" << std::endl;
+	std::cout << "3. Delete by node month" << std::endl;
+	std::cout << "4. Delete by node day" << std::endl;
+	std::cout << "5. Delete by node era" << std::endl;
+	std::cout << "6. Delete by node tag" << std::endl;
+	std::cout << "What parameters do you want to use?: " << std::endl;
+	std::cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+		//deleteByTitle(node);
+		std::cout << "print all nodes that have this criteria" << std::endl;
+		std::cout << "Delete by title" << std::endl;
+		break;
+
+	case 2:
+		//deleteByYear(node);
+		std::cout << "print all nodes that have this criteria" << std::endl;
+		std::cout << "Delete by year" << std::endl;
+		break;
+
+	case 3:
+		//deleteByMonth(node);
+		std::cout << "print all nodes that have this criteria" << std::endl;
+		std::cout << "Delete by month" << std::endl;
+		break;
+
+	case 4:
+		//deleteByDay(node);
+		std::cout << "print all nodes that have this criteria" << std::endl;
+		std::cout << "Delete by day" << std::endl;
+		break;
+
+	case 5:
+		//deleteByEra(node);
+		std::cout << "print all nodes that have this criteria" << std::endl;
+		std::cout << "Delete by era" << std::endl;
+		break;
+
+	case 6:
+		//deleteByTag(node);
+		std::cout << "print all nodes that have this criteria" << std::endl;
+		std::cout << "Delete by tag" << std::endl;
+		break;
+	default:
+		std::cout << "Incorrect input!" << std::endl;
 		break;
 	}
 }

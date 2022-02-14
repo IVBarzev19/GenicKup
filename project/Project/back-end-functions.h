@@ -16,6 +16,7 @@ struct NODE
 	NODE* prev = NULL;
 };
 
+// ==============================> Helping functions for basic operations (printing, swaping etc.)
 NODE* takeInput();
 
 std::string convertToLower(std::string str);
@@ -34,17 +35,18 @@ void swapInts(unsigned short int& a, unsigned short int& b);
 
 void swapNodes(NODE** fNode, NODE** sNode);
 
-void sortNodesByDate(NODE** node);
-
 void printNode(NODE* node);
 
 void printAllNodes(NODE* node);
+
+// ==============================> Application functionality (searching, sorting etc.)
+void sortNodesByDate(NODE** node);
 
 void assignEra(NODE* node);
 
 void assignAllEras(NODE* node);
 
-//not complete - must add more tags =>----------------------------------------?------------------------------------------<=
+//not complete - must add more tags
 void assignTag(NODE* node);
 
 void assignAllTags(NODE* node);
@@ -53,10 +55,11 @@ void prependNode(NODE** node);
 
 void appendNode(NODE** node);
 
-void deleteAllNodes(NODE** node);
-
 void searchByTag(NODE* node, std::string sTag);
 
 void searchByEra(NODE* node, std::string sEra);
 
 void searchByTitle(NODE* node, std::string sTitle);
+
+// ==============================> Deleting functions
+void deleteAllNodes(NODE** node);

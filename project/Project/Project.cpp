@@ -26,8 +26,7 @@ int main()
 	std::cout << std::endl;
 
 	printAllNodes(Head);*/
-
-	showSearchMenuOptions(Head);
+	showDeleteMenuOptions(Head);
 
 	deleteAllNodes(&Head);
 

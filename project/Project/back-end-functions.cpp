@@ -1,5 +1,6 @@
 #include "back-end-functions.h"
 
+// ==============================> Helping functions for basic operations (printing, swaping etc.)
 NODE* takeInput()
 {
 	NODE* node = new NODE;
@@ -86,6 +87,30 @@ void swapNodes(NODE** fNode, NODE** sNode)
 	swapInts((*fNode)->mOccasionDay, (*sNode)->mOccasionDay);
 }
 
+void printNode(NODE* node)
+{
+	std::cout << "Title: " << node->mOccasionTitle << std::endl;
+	std::cout << "Description: " << node->mOccasionDescription << std::endl;
+	std::cout << "Year: " << node->mOccasionYear << std::endl;
+	std::cout << "Month: " << node->mOccasionMonth << std::endl;
+	std::cout << "Day: " << node->mOccasionDay << std::endl;
+	std::cout << "Tag: " << node->mTag << std::endl;
+	std::cout << "Era: " << node->mEra << std::endl;
+	std::cout << std::endl;
+}
+
+void printAllNodes(NODE* node)
+{
+	navigateToBegining(&node);
+
+	while (node != NULL)
+	{
+		printNode(node);
+		node = node->next;
+	}
+}
+
+// ==============================> Application functionality (searching, sorting etc.)
 void sortNodesByDate(NODE** node)
 {
 	for (int i = 0; i < countNodes(*node); i++)
@@ -117,29 +142,6 @@ void sortNodesByDate(NODE** node)
 			}
 			*node = (*node)->next;
 		}
-	}
-}
-
-void printNode(NODE* node)
-{
-	std::cout << "Title: " << node->mOccasionTitle << std::endl;
-	std::cout << "Description: " << node->mOccasionDescription << std::endl;
-	std::cout << "Year: " << node->mOccasionYear << std::endl;
-	std::cout << "Month: " << node->mOccasionMonth << std::endl;
-	std::cout << "Day: " << node->mOccasionDay << std::endl;
-	std::cout << "Tag: " << node->mTag << std::endl;
-	std::cout << "Era: " << node->mEra << std::endl;
-	std::cout << std::endl;
-}
-
-void printAllNodes(NODE* node)
-{
-	navigateToBegining(&node);
-
-	while (node != NULL)
-	{
-		printNode(node);
-		node = node->next;
 	}
 }
 
@@ -181,7 +183,7 @@ void assignAllEras(NODE* node)
 	}
 }
 
-//not complete - must add more tags =>----------------------------------------?------------------------------------------<=
+//not complete - must add more tags
 void assignTag(NODE* node)
 {
 	if (convertToLower(node->mOccasionTitle).find("conquer") != std::string::npos ||
@@ -210,7 +212,8 @@ void assignTag(NODE* node)
 			{
 				std::cout << "Program was unable to set tag automatically for occasion " << node->mOccasionTitle << ", please do so manually..." << std::endl;
 				std::cout << "Tag: ";
-				std::cin >> node->mTag;
+				std::cin >> std::ws;
+				getline(std::cin, node->mTag);
 			}
 }
 
@@ -250,18 +253,6 @@ void appendNode(NODE** node)
 	(*node)->next = newNode;
 
 	navigateToBegining(node);
-}
-
-void deleteAllNodes(NODE** node)
-{
-	navigateToBegining(node);
-
-	while ((*node)->next != NULL && (*node)->prev != NULL)
-	{
-		*node = (*node)->next;
-		delete ((*node)->prev);
-	}
-	delete* node;
 }
 
 void searchByTag(NODE* node, std::string sTag)
@@ -334,4 +325,17 @@ void searchByTitle(NODE* node, std::string sTitle)
 	{
 		std::cout << "No such node was found!" << std::endl;
 	}
+}
+
+// ==============================> Deleting functions
+void deleteAllNodes(NODE** node)
+{
+	navigateToBegining(node);
+
+	while ((*node)->next != NULL && (*node)->prev != NULL)
+	{
+		*node = (*node)->next;
+		delete ((*node)->prev);
+	}
+	delete* node;
 }
