@@ -134,6 +134,29 @@ void printBye()
 		std::cout << " ============================================================================================================================================" << std::endl;
 }
 
+void showAboutUsMenu(short int& choice)
+{
+	system("cls");
+	showTeamLogo();
+	std::cout << std::endl << std::endl;
+	std::cout << "                                                                 Hello!" << std::endl;
+	std::cout << std::endl;
+	std::cout << "                                In this menu you can see information about the developers of the application!" << std::endl;
+	std::cout << std::endl << std::endl;
+	std::cout << "                                                         Authors & contributors" << std::endl;
+	std::cout << std::endl;
+	std::cout << "                                                     Scrum Trainer-Alexander Tsachev" << std::endl;
+	std::cout << std::endl;
+	std::cout << "                                                      QA Engeneer-Stefan Ravninov" << std::endl;
+	std::cout << std::endl;
+	std::cout << "                                                     Back-end Developer-Ivan Barzev" << std::endl;
+	std::cout << std::endl;
+	std::cout << "                                                  Front-end Developer-Alexandar Bozhikov" << std::endl;
+	std::cout << std::endl << std::endl;
+	getBack(choice);
+
+}
+
 void getEditNodeDetails(NODE* node, std::string sTitle, short int& sChoice)
 {
 	navigateToBegining(&node);
@@ -444,6 +467,8 @@ void startApp(NODE** node)
 		case 5: 
 			showEditMenu(*node, choice);
 			break;
+		case 6:
+			showAboutUsMenu(choice);
 		default:
 			std::cout << "Incorrect input!" << std::endl;
 			break;
