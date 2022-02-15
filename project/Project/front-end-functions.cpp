@@ -142,16 +142,16 @@ void showAddMenu(NODE** node, short int& sChoice)
 	{
 	case 1:
 		appendNode(node);
+		std::cout << "Element added!" << std::endl;
 		break;
 	case 2:
 		prependNode(node);
+		std::cout << "Element added!" << std::endl;
 		break;
 	default:
 		std::cout << "Incorrect input" << std::endl;
 		break;
 	}
-
-	std::cout << "Element added!" << std::endl;
 	getBack(choice);
 }
 
@@ -169,7 +169,7 @@ void showDeleteTitle() {
 	std::cout << "                   |    |       -    -|     --------- |      --------- |     ---------        |     |      |     --------- " << std::endl;
 	std::cout << "                   |     -------   -  |              ||               ||              |       |     |      |              |" << std::endl;
 	std::cout << "                    ---------------    --------------  ---------------  --------------         -----        -------------- " << std::endl;
-	std::cout << "==============================================================================================================================================" << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
 }
 
 void showSearchTitle() 
@@ -187,7 +187,7 @@ void showSearchTitle()
 	std::cout << "                            |              ||     --------- |     |      |     ||     |    |   ||                ||     |       |     |" << std::endl;
 	std::cout << "                            |              ||              ||     |      |     ||     |     |  ||                ||     |       |     |" << std::endl;
 	std::cout << "                             --------------  --------------  -----        -----  ----        --- ----------------  -----         ----- " << std::endl;
-	std::cout << "===================================================================================================================================================================" << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
 }
 
 void showAddTitle() {
@@ -203,8 +203,26 @@ void showAddTitle() {
 	std::cout << "                                     |     |      |     | |   |     |   ||   |     |   |" << std::endl;
 	std::cout << "                                     |     |      |     | |   |     |   ||   |     |   |" << std::endl;
 	std::cout << "                                     |     |      |     | |    -----    ||    -----    |" << std::endl;
-	std::cout << "                                      -----        -----   -------------  -------------" << std::endl;
-	std::cout << "=============================================================================================================================" << std::endl;
+	std::cout << "                                      -----        -----   -------------  -------------" << std::endl; 
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void showPrintTitle()
+{
+	std::cout << "                         _____________  _____________   _____  _____        ____  __________________" << std::endl;
+	std::cout << "                        |             ||      ---    | |     ||     |      |    ||                  |" << std::endl;
+	std::cout << "                        |      ---    ||     |   |   | |     ||      |     |    ||                  |" << std::endl;
+	std::cout << "                        |     |   |   ||     |   |   |  ----- |       |    |    | ------      ------" << std::endl;
+	std::cout << "                        |      ---    ||      ---    |  _____ |        |   |    |       |     |" << std::endl;
+	std::cout << "                        |      ------- |         ----  |     ||         |  |    |       |     |" << std::endl;
+	std::cout << "                        |     |        |    ||   |     |     ||          | |    |       |     |" << std::endl;
+	std::cout << "                        |     |        |    | |   |    |     ||    ||     ||    |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |  |   |   |     ||    | |          |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |   |   |  |     ||    |  |         |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |    |   | |     ||    |   |        |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |     |   ||     ||    |    |       |       |     |" << std::endl;
+	std::cout << "                         -----          ----       ---  -----  ----      -------         ----- " << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
 }
 
 void showTeamTitle() {
@@ -245,9 +263,11 @@ void showPrintNodesMenu(NODE* node, short int& sChoice)
 	short int choice;
 	std::string toSearch;
 	system("cls");
+	showPrintTitle();
 	std::cout << "What do you want to print?" << std::endl;
 	std::cout << "1. Every element from a specific era" << std::endl;
-	std::cout << "1. Every element with a specific tag" << std::endl;
+	std::cout << "2. Every element with a specific tag" << std::endl;
+	std::cout << "3. Every element" << std::endl;
 	std::cin >> choice;
 	switch (choice)
 	{
@@ -258,12 +278,37 @@ void showPrintNodesMenu(NODE* node, short int& sChoice)
 		printSpecificEraNodes(node, toSearch);
 		break;
 	case 2:
+		std::cout << "What is the tag you are searching for?: ";
+		std::cin >> std::ws;
+		getline(std::cin, toSearch);
+		printSpecificTagNodes(node, toSearch);
+		break;
+	case 3:
+		printAllNodes(node);
 		break;
 	default:
 		std::cout << "Incorrect input" << std::endl;
 		break;
 	}
 	getBack(sChoice);
+}
+
+void printBye()
+{
+		std::cout << "                                     _____________    _____           _____  ______________  _____" << std::endl;
+		std::cout << "                                   |     -------   | |     |         |     ||              ||     |" << std::endl;
+		std::cout << "                                   |    |       |   | |     |       |     | |     --------- |     |" << std::endl;
+		std::cout << "                                   |    |       |   |  |     |     |     |  |    |          |     |" << std::endl;
+		std::cout << "                                   |    |       |   |   |     |   |     |   |    |          |     |" << std::endl;
+		std::cout << "                                   |     -------   |     |     | |     |    |     --------- |     |" << std::endl;
+		std::cout << "                                   |               |      |           |     |              ||     |" << std::endl;
+		std::cout << "                                   |     --------   |      |         |      |     --------- |     |" << std::endl;
+		std::cout << "                                   |    |        |   |      |       |       |    |          |     |" << std::endl;
+		std::cout << "                                   |    |        |   |      |       |       |    |           -----" << std::endl;
+		std::cout << "                                   |    |        |   |      |       |       |     ---------  -----" << std::endl;
+		std::cout << "                                   |     --------   |       |       |       |              ||     |" << std::endl;
+		std::cout << "                                    ----------------         -------         --------------  -----" << std::endl;
+		std::cout << "============================================================================================================================================" << std::endl;
 }
 
 void startApp(NODE** node)
@@ -289,6 +334,8 @@ void startApp(NODE** node)
 			break;
 		}
 	}
+	system("cls");
+	printBye();
 }
 
 //std::cout << "============================================================================================================================================" << std::endl;

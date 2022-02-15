@@ -11,7 +11,7 @@ void showSearchMenuOptions(NODE* node, short int& sChoice);
 
 void showDeleteMenuOptions(NODE* node);
 
-void showPrintNodesMenu(NODE* node);
+void showPrintNodesMenu(NODE* node, short int& sChoice);
 
 void getBack(short int& choice);
 
@@ -22,6 +22,8 @@ void showDeleteTitle();
 void showSearchTitle();
 
 void showAddTitle();
+
+void showPrintTitle();
 
 void showTeamTitle();
 

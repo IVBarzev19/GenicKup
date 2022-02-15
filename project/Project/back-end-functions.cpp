@@ -122,6 +122,18 @@ void printSpecificEraNodes(NODE* node, std::string sEra)
 	}
 }
 
+void printSpecificTagNodes(NODE* node, std::string sTag)
+{
+	navigateToBegining(&node);
+
+	while (node != NULL)
+	{
+		if (convertToLower(node->mTag) == convertToLower(sTag))
+			printNode(node);
+		node = node->next;
+	}
+}
+
 // ==============================> Application functionality (searching, sorting etc.)
 void sortNodesByDate(NODE** node)
 {
