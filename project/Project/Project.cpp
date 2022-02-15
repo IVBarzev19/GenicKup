@@ -10,7 +10,7 @@ int main()
 	Head->mOccasionDay = 29;
 	Head->mEra = "Middle ages";
 	Head->mTag = "battle";
-
+	
 	startApp(&Head);
 
 	deleteAllNodes(&Head);

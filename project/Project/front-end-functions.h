@@ -1,32 +1,38 @@
 #pragma once
 #include "back-end-functions.h"
 
+void getBack(short int& choice);
+
+void showDeleteLogo();
+
+void showSearchLogo();
+
+void showAddLogo();
+
+void showPrintLogo();
+
+void showEditLogo();
+
+void showTeamLogo();
+
+void getEditNodeDetails(NODE* node, std::string sTitle, short int& sChoice);
+
 void getSearchByEraDetails(NODE* node);
 
 void getSearchByTagDetails(NODE* node);
 
 void getSearchByTitleDetails(NODE* node);
 
-void showSearchMenuOptions(NODE* node, short int& sChoice);
-
-void showDeleteMenuOptions(NODE* node);
-
-void showPrintNodesMenu(NODE* node, short int& sChoice);
-
-void getBack(short int& choice);
-
 void showAddMenu(NODE** node, short int& sChoice);
 
-void showDeleteTitle();
+void showSearchMenu(NODE* node, short int& sChoice);
 
-void showSearchTitle();
+void showDeleteMenu(NODE* node);
 
-void showAddTitle();
+void showPrintMenu(NODE* node, short int& sChoice);
 
-void showPrintTitle();
+void showEditMenu(NODE* node, short int& sChoice);
 
-void showTeamTitle();
-
-void showMenuOptions(NODE** node);
+void showMainMenu(NODE** node);
 
 void startApp(NODE** node);

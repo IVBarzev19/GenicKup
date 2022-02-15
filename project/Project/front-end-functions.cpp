@@ -1,5 +1,166 @@
 #include "front-end-functions.h"
 
+void getBack(short int& choice)
+{
+	char answer;
+	std::cout << "Do you want to continue using the application? y/n" << std::endl;
+	std::cin >> answer;
+	if (tolower(answer) == 'n')
+	{
+		choice = 7;
+	}
+}
+
+void showAddLogo() {
+	std::cout << "                                       ________________             ____           ____" << std::endl;
+	std::cout << "                                                                   |    |         |    |" << std::endl;
+	std::cout << "                                     |      ------      |          |    |         |    |" << std::endl;
+	std::cout << "                                     |     |      |     |          |    |         |    |" << std::endl;
+	std::cout << "                                     |     |      |     |          |    |         |    |" << std::endl;
+	std::cout << "                                     |      ------      |          |    |         |    |" << std::endl;
+	std::cout << "                                     |                  |          |    |         |    |" << std::endl;
+	std::cout << "                                     |                  |   -------     |  -------     |" << std::endl;
+	std::cout << "                                     |      ------      | |    -----    ||    -----    |" << std::endl;
+	std::cout << "                                     |     |      |     | |   |     |   ||   |     |   |" << std::endl;
+	std::cout << "                                     |     |      |     | |   |     |   ||   |     |   |" << std::endl;
+	std::cout << "                                     |     |      |     | |    -----    ||    -----    |" << std::endl;
+	std::cout << "                                      -----        -----   -------------  -------------" << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void showSearchLogo()
+{
+	std::cout << "                             ______________  ______________   ________________   ______________  ________________  _____         _____ " << std::endl;
+	std::cout << "                            |              ||              | |                | |       ---    ||                ||     |       |     |" << std::endl;
+	std::cout << "                            |              ||     --------- |      ------      ||      |   |   ||                ||     |       |     |" << std::endl;
+	std::cout << "                            |      -------- |    |          |     |      |     ||      |   |   ||      ---------- |     |       |     |" << std::endl;
+	std::cout << "                            |     |         |    |          |     |      |     ||       ---    ||     |           |     |       |     |" << std::endl;
+	std::cout << "                            |     |         |     --------- |      ------      ||      -------- |     |           |     --------      |" << std::endl;
+	std::cout << "                            |      ---------|              ||                  ||     ||   |    |     |           |                   |" << std::endl;
+	std::cout << "                             -------       ||     --------- |                  ||     | |   |   |     |           |                   |" << std::endl;
+	std::cout << "                                    |      ||    |          |      ------      ||     |  |   |  |     |           |      -------      |" << std::endl;
+	std::cout << "                             -------       ||    |          |     |      |     ||     |   |   | |      __________ |     |       |     |" << std::endl;
+	std::cout << "                            |              ||     --------- |     |      |     ||     |    |   ||                ||     |       |     |" << std::endl;
+	std::cout << "                            |              ||              ||     |      |     ||     |     |  ||                ||     |       |     |" << std::endl;
+	std::cout << "                             --------------  --------------  -----        -----  ----        --- ----------------  -----         ----- " << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void showDeleteLogo() {
+	std::cout << "                    ______________     ______________  _____            ______________  __________________  ______________ " << std::endl;
+	std::cout << "                   |              -   |              ||     |          |              ||                  ||              |" << std::endl;
+	std::cout << "                   |     --------   - |     --------- |     |          |     --------- |                  ||     --------- " << std::endl;
+	std::cout << "                   |    |        -   ||    |          |     |          |    |           ------      ------ |    |          " << std::endl;
+	std::cout << "                   |    |         |  ||    |          |     |          |    |                 |     |      |    |          " << std::endl;
+	std::cout << "                   |    |         |  ||     --------- |     |          |     ---------        |     |      |     --------- " << std::endl;
+	std::cout << "                   |    |         |  ||              ||     |          |              |       |     |      |              |" << std::endl;
+	std::cout << "                   |    |         |  ||     --------- |     |          |     ---------        |     |      |     --------- " << std::endl;
+	std::cout << "                   |    |         |  ||    |          |     |          |    |                 |     |      |    |          " << std::endl;
+	std::cout << "                   |    |         -  ||    |          |     |          |    |                 |     |      |    |          " << std::endl;
+	std::cout << "                   |    |       -    -|     --------- |      --------- |     ---------        |     |      |     --------- " << std::endl;
+	std::cout << "                   |     -------   -  |              ||               ||              |       |     |      |              |" << std::endl;
+	std::cout << "                    ---------------    --------------  ---------------  --------------         -----        -------------- " << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void showPrintLogo()
+{
+	std::cout << "                         _____________  _____________   _____  _____        ____  __________________" << std::endl;
+	std::cout << "                        |             ||      ---    | |     ||     |      |    ||                  |" << std::endl;
+	std::cout << "                        |      ---    ||     |   |   | |     ||      |     |    ||                  |" << std::endl;
+	std::cout << "                        |     |   |   ||     |   |   |  ----- |       |    |    | ------      ------" << std::endl;
+	std::cout << "                        |      ---    ||      ---    |  _____ |        |   |    |       |     |" << std::endl;
+	std::cout << "                        |      ------- |         ----  |     ||         |  |    |       |     |" << std::endl;
+	std::cout << "                        |     |        |    ||   |     |     ||          | |    |       |     |" << std::endl;
+	std::cout << "                        |     |        |    | |   |    |     ||    ||     ||    |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |  |   |   |     ||    | |          |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |   |   |  |     ||    |  |         |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |    |   | |     ||    |   |        |       |     |" << std::endl;
+	std::cout << "                        |     |        |    |     |   ||     ||    |    |       |       |     |" << std::endl;
+	std::cout << "                         -----          ----       ---  -----  ----      -------         ----- " << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void showEditLogo()
+{
+	std::cout << "                                        ______________  ______________     _____  __________________ " << std::endl;
+	std::cout << "                                       |              ||              -   |     ||                  |" << std::endl;
+	std::cout << "                                       |     --------- |     --------   - |     ||                  |" << std::endl;
+	std::cout << "                                       |    |          |    |        -   | -----  ------      ------" << std::endl;
+	std::cout << "                                       |    |          |    |         |  | _____        |     |" << std::endl;
+	std::cout << "                                       |     --------- |    |         |  ||     |       |     |" << std::endl;
+	std::cout << "                                       |              ||    |         |  ||     |       |     |" << std::endl;
+	std::cout << "                                       |     --------- |    |         |  ||     |       |     |" << std::endl;
+	std::cout << "                                       |    |          |    |         |  ||     |       |     |" << std::endl;
+	std::cout << "                                       |    |          |    |         -  ||     |       |     |" << std::endl;
+	std::cout << "                                       |     --------- |    |       -    -|     |       |     |" << std::endl;
+	std::cout << "                                       |              ||     -------   -  |     |       |     |" << std::endl;
+	std::cout << "                                        --------------  --------------     -----         -----" << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void showTeamLogo() {
+	std::cout << "      ________________  ______________  _____        ____  _____  ________________  _____     _____  _____         _____  _____________" << std::endl;
+	std::cout << "     |                ||              ||     |      |    ||     ||                ||     |   |     ||     |       |     ||             |" << std::endl;
+	std::cout << "     |                ||     --------- |      |     |    ||     ||                ||     |  |     | |     |       |     ||      ---    |" << std::endl;
+	std::cout << "     |     ----------- |    |          |       |    |    | ----- |      ---------- |     | |     |  |     |       |     ||     |   |   |" << std::endl;
+	std::cout << "     |     |           |    |          |         |  |    | _____ |     |           |     ||     |   |     |       |     ||      ---    |" << std::endl;
+	std::cout << "     |     |           |     --------- |          | |    ||     ||     |           |           |    |     |       |     ||      -------" << std::endl;
+	std::cout << "     |     |    ------ |              ||    ||     ||    ||     ||     |           |          |     |     |       |     ||     |" << std::endl;
+	std::cout << "     |     |   |      ||     --------- |    | |          ||     ||     |           |           |    |     |       |     ||     |" << std::endl;
+	std::cout << "     |     |   |      ||    |          |    |  |         ||     ||     |           |     ||     |   |     |       |     ||     |" << std::endl;
+	std::cout << "     |     |   |      ||    |          |    |   |        ||     ||      __________ |     | |     |  |     |       |     ||     |" << std::endl;
+	std::cout << "     |       ---      ||     --------- |    |    |       ||     ||                ||     |  |     | |      -------      ||     |" << std::endl;
+	std::cout << "     |                ||              ||    |     |      ||     ||                ||     |   |     ||                   ||     |" << std::endl;
+	std::cout << "      ----------------  --------------  ----       ------  -----  ----------------  -----     -----  -------------------  -----" << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void printBye()
+{
+		std::cout << "                                     _____________    _____           _____  ______________  _____" << std::endl;
+		std::cout << "                                   |     -------   | |     |         |     ||              ||     |" << std::endl;
+		std::cout << "                                   |    |       |   | |     |       |     | |     --------- |     |" << std::endl;
+		std::cout << "                                   |    |       |   |  |     |     |     |  |    |          |     |" << std::endl;
+		std::cout << "                                   |    |       |   |   |     |   |     |   |    |          |     |" << std::endl;
+		std::cout << "                                   |     -------   |     |     | |     |    |     --------- |     |" << std::endl;
+		std::cout << "                                   |               |      |           |     |              ||     |" << std::endl;
+		std::cout << "                                   |     --------   |      |         |      |     --------- |     |" << std::endl;
+		std::cout << "                                   |    |        |   |      |       |       |    |          |     |" << std::endl;
+		std::cout << "                                   |    |        |   |      |       |       |    |           -----" << std::endl;
+		std::cout << "                                   |    |        |   |      |       |       |     ---------  -----" << std::endl;
+		std::cout << "                                   |     --------   |       |       |       |              ||     |" << std::endl;
+		std::cout << "                                    ----------------         -------         --------------  -----" << std::endl;
+		std::cout << "============================================================================================================================================" << std::endl;
+}
+
+void getEditNodeDetails(NODE* node, std::string sTitle, short int& sChoice)
+{
+	navigateToBegining(&node);
+	bool isFound = false;
+	char choice;
+	while (node != NULL)
+	{
+		if (convertToLower(node->mOccasionTitle) == convertToLower(sTitle))
+		{
+			std::cout << std::endl << "A node with this title was found : " << std::endl;
+			printNode(node);
+			isFound = true;
+			break;
+		}
+		node = node->next;
+	}
+	if (isFound)
+	{
+		std::cout << "Do you want to edit this element? y/n" << std::endl;
+		std::cin >> choice;
+		if (choice == 'y')
+		{
+			editNode(node);
+		}
+	}
+}
+
 void getSearchByEraDetails(NODE* node)
 {
 	std::string toSearch;
@@ -27,11 +188,37 @@ void getSearchByTitleDetails(NODE* node)
 	searchByTitle(node, toSearch);
 }
 
-void showSearchMenuOptions(NODE* node, short int& sChoice)
+void showAddMenu(NODE** node, short int& sChoice)
 {
 	short int choice;
 	system("cls");
-	showSearchTitle();
+	showAddLogo();
+	std::cout << "What method do you want to use?" << std::endl;
+	std::cout << "1. Appending" << std::endl;
+	std::cout << "2. Prepending" << std::endl;
+	std::cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		appendNode(node);
+		std::cout << "Element added!" << std::endl;
+		break;
+	case 2:
+		prependNode(node);
+		std::cout << "Element added!" << std::endl;
+		break;
+	default:
+		std::cout << "Incorrect input" << std::endl;
+		break;
+	}
+	getBack(choice);
+}
+
+void showSearchMenu(NODE* node, short int& sChoice)
+{
+	short int choice;
+	system("cls");
+	showSearchLogo();
 
 	std::cout << "What are you searching for?" << std::endl;
 	std::cout << "1. A specific era, the occasion took place in" << std::endl;
@@ -59,11 +246,11 @@ void showSearchMenuOptions(NODE* node, short int& sChoice)
 	getBack(sChoice);
 }
 
-void showDeleteMenuOptions(NODE* node)
+void showDeleteMenu(NODE* node)
 {
 	short int choice;
-	
-	showDeleteTitle();
+
+	showDeleteLogo();
 
 	std::cout << "Available delete-by functions:" << std::endl;
 	std::cout << "1. Delete by node title" << std::endl;
@@ -118,152 +305,12 @@ void showDeleteMenuOptions(NODE* node)
 	}
 }
 
-void getBack(short int& choice)
-{
-	char answer;
-	std::cout << "Do you want to continue using the application? y/n" << std::endl;
-	std::cin >> answer;
-	if (tolower(answer) == 'n')
-	{
-		choice = 6;
-	}
-}
-
-void showAddMenu(NODE** node, short int& sChoice)
-{
-	short int choice;
-	system("cls");
-	showAddTitle();
-	std::cout << "What method do you want to use?" << std::endl;
-	std::cout << "1. Appending" << std::endl;
-	std::cout << "2. Prepending" << std::endl;
-	std::cin >> choice;
-	switch (choice)
-	{
-	case 1:
-		appendNode(node);
-		std::cout << "Element added!" << std::endl;
-		break;
-	case 2:
-		prependNode(node);
-		std::cout << "Element added!" << std::endl;
-		break;
-	default:
-		std::cout << "Incorrect input" << std::endl;
-		break;
-	}
-	getBack(choice);
-}
-
-void showDeleteTitle() {
-	std::cout << "                    ______________     ______________  _____            ______________  __________________  ______________ " << std::endl;
-	std::cout << "                   |              -   |              ||     |          |              ||                  ||              |" << std::endl;
-	std::cout << "                   |     --------   - |     --------- |     |          |     --------- |                  ||     --------- " << std::endl;
-	std::cout << "                   |    |        -   ||    |          |     |          |    |           ------      ------ |    |          " << std::endl;
-	std::cout << "                   |    |         |  ||    |          |     |          |    |                 |     |      |    |          " << std::endl;
-	std::cout << "                   |    |         |  ||     --------- |     |          |     ---------        |     |      |     --------- " << std::endl;
-	std::cout << "                   |    |         |  ||              ||     |          |              |       |     |      |              |" << std::endl;
-	std::cout << "                   |    |         |  ||     --------- |     |          |     ---------        |     |      |     --------- " << std::endl;
-	std::cout << "                   |    |         |  ||    |          |     |          |    |                 |     |      |    |          " << std::endl;
-	std::cout << "                   |    |         -  ||    |          |     |          |    |                 |     |      |    |          " << std::endl;
-	std::cout << "                   |    |       -    -|     --------- |      --------- |     ---------        |     |      |     --------- " << std::endl;
-	std::cout << "                   |     -------   -  |              ||               ||              |       |     |      |              |" << std::endl;
-	std::cout << "                    ---------------    --------------  ---------------  --------------         -----        -------------- " << std::endl;
-	std::cout << "============================================================================================================================================" << std::endl;
-}
-
-void showSearchTitle() 
-{
-	std::cout << "                             ______________  ______________   ________________   ______________  ________________  _____         _____ " << std::endl;
-	std::cout << "                            |              ||              | |                | |       ---    ||                ||     |       |     |" << std::endl;
-	std::cout << "                            |              ||     --------- |      ------      ||      |   |   ||                ||     |       |     |" << std::endl;
-	std::cout << "                            |      -------- |    |          |     |      |     ||      |   |   ||      ---------- |     |       |     |" << std::endl;
-	std::cout << "                            |     |         |    |          |     |      |     ||       ---    ||     |           |     |       |     |" << std::endl;
-	std::cout << "                            |     |         |     --------- |      ------      ||      -------- |     |           |     --------      |" << std::endl;
-	std::cout << "                            |      ---------|              ||                  ||     ||   |    |     |           |                   |" << std::endl;
-	std::cout << "                             -------       ||     --------- |                  ||     | |   |   |     |           |                   |" << std::endl;
-	std::cout << "                                    |      ||    |          |      ------      ||     |  |   |  |     |           |      -------      |" << std::endl;
-	std::cout << "                             -------       ||    |          |     |      |     ||     |   |   | |      __________ |     |       |     |" << std::endl;
-	std::cout << "                            |              ||     --------- |     |      |     ||     |    |   ||                ||     |       |     |" << std::endl;
-	std::cout << "                            |              ||              ||     |      |     ||     |     |  ||                ||     |       |     |" << std::endl;
-	std::cout << "                             --------------  --------------  -----        -----  ----        --- ----------------  -----         ----- " << std::endl;
-	std::cout << "============================================================================================================================================" << std::endl;
-}
-
-void showAddTitle() {
-	std::cout << "                                       ________________             ____           ____" << std::endl;
-	std::cout << "                                                                   |    |         |    |" << std::endl;
-	std::cout << "                                     |      ------      |          |    |         |    |" << std::endl;
-	std::cout << "                                     |     |      |     |          |    |         |    |" << std::endl;
-	std::cout << "                                     |     |      |     |          |    |         |    |" << std::endl;
-	std::cout << "                                     |      ------      |          |    |         |    |" << std::endl;
-	std::cout << "                                     |                  |          |    |         |    |" << std::endl;
-	std::cout << "                                     |                  |   -------     |  -------     |" << std::endl;
-	std::cout << "                                     |      ------      | |    -----    ||    -----    |" << std::endl;
-	std::cout << "                                     |     |      |     | |   |     |   ||   |     |   |" << std::endl;
-	std::cout << "                                     |     |      |     | |   |     |   ||   |     |   |" << std::endl;
-	std::cout << "                                     |     |      |     | |    -----    ||    -----    |" << std::endl;
-	std::cout << "                                      -----        -----   -------------  -------------" << std::endl; 
-	std::cout << "============================================================================================================================================" << std::endl;
-}
-
-void showPrintTitle()
-{
-	std::cout << "                         _____________  _____________   _____  _____        ____  __________________" << std::endl;
-	std::cout << "                        |             ||      ---    | |     ||     |      |    ||                  |" << std::endl;
-	std::cout << "                        |      ---    ||     |   |   | |     ||      |     |    ||                  |" << std::endl;
-	std::cout << "                        |     |   |   ||     |   |   |  ----- |       |    |    | ------      ------" << std::endl;
-	std::cout << "                        |      ---    ||      ---    |  _____ |        |   |    |       |     |" << std::endl;
-	std::cout << "                        |      ------- |         ----  |     ||         |  |    |       |     |" << std::endl;
-	std::cout << "                        |     |        |    ||   |     |     ||          | |    |       |     |" << std::endl;
-	std::cout << "                        |     |        |    | |   |    |     ||    ||     ||    |       |     |" << std::endl;
-	std::cout << "                        |     |        |    |  |   |   |     ||    | |          |       |     |" << std::endl;
-	std::cout << "                        |     |        |    |   |   |  |     ||    |  |         |       |     |" << std::endl;
-	std::cout << "                        |     |        |    |    |   | |     ||    |   |        |       |     |" << std::endl;
-	std::cout << "                        |     |        |    |     |   ||     ||    |    |       |       |     |" << std::endl;
-	std::cout << "                         -----          ----       ---  -----  ----      -------         ----- " << std::endl;
-	std::cout << "============================================================================================================================================" << std::endl;
-}
-
-void showTeamTitle() {
-	std::cout << "      ________________  ______________  _____        ____  _____  ________________  _____     _____  _____         _____  _____________" << std::endl;
-	std::cout << "     |                ||              ||     |      |    ||     ||                ||     |   |     ||     |       |     ||             |" << std::endl;
-	std::cout << "     |                ||     --------- |      |     |    ||     ||                ||     |  |     | |     |       |     ||      ---    |" << std::endl;
-	std::cout << "     |     ----------- |    |          |       |    |    | ----- |      ---------- |     | |     |  |     |       |     ||     |   |   |" << std::endl;
-	std::cout << "     |     |           |    |          |         |  |    | _____ |     |           |     ||     |   |     |       |     ||      ---    |" << std::endl;
-	std::cout << "     |     |           |     --------- |          | |    ||     ||     |           |           |    |     |       |     ||      -------" << std::endl;
-	std::cout << "     |     |    ------ |              ||    ||     ||    ||     ||     |           |          |     |     |       |     ||     |" << std::endl;
-	std::cout << "     |     |   |      ||     --------- |    | |          ||     ||     |           |           |    |     |       |     ||     |" << std::endl;
-	std::cout << "     |     |   |      ||    |          |    |  |         ||     ||     |           |     ||     |   |     |       |     ||     |" << std::endl;
-	std::cout << "     |     |   |      ||    |          |    |   |        ||     ||      __________ |     | |     |  |     |       |     ||     |" << std::endl;
-	std::cout << "     |       ---      ||     --------- |    |    |       ||     ||                ||     |  |     | |      -------      ||     |" << std::endl;
-	std::cout << "     |                ||              ||    |     |      ||     ||                ||     |   |     ||                   ||     |" << std::endl;
-	std::cout << "      ----------------  --------------  ----       ------  -----  ----------------  -----     -----  -------------------  -----" << std::endl;
-	std::cout << "============================================================================================================================================" << std::endl;
-}
-
-void showMenuOptions(NODE** node)
-{
-		system("cls");
-		showTeamTitle();
-		std::cout << "                                                   --------------------------------" << std::endl;
-		std::cout << "                                                                Menu   " << std::endl;
-		std::cout << "                                                   --------------------------------" << std::endl;
-		std::cout << std::endl << std::endl;
-		std::cout << "                                                          1.Add new event" << std::endl << std::endl;
-		std::cout << "                                                             2.Search" << std::endl << std::endl;
-		std::cout << "                                                          3.Delete event" << std::endl << std::endl;
-		std::cout << "                                                          4.Print events" << std::endl << std::endl;
-		std::cout << "                                                              5.Quiz" << std::endl << std::endl;
-		std::cout << "                                                              6.Exit" << std::endl;
-}
-
-void showPrintNodesMenu(NODE* node, short int& sChoice)
+void showPrintMenu(NODE* node, short int& sChoice)
 {
 	short int choice;
 	std::string toSearch;
 	system("cls");
-	showPrintTitle();
+	showPrintLogo();
 	std::cout << "What do you want to print?" << std::endl;
 	std::cout << "1. Every element from a specific era" << std::endl;
 	std::cout << "2. Every element with a specific tag" << std::endl;
@@ -293,41 +340,58 @@ void showPrintNodesMenu(NODE* node, short int& sChoice)
 	getBack(sChoice);
 }
 
-void printBye()
+void showEditMenu(NODE* node, short int& sChoice)
 {
-		std::cout << "                                     _____________    _____           _____  ______________  _____" << std::endl;
-		std::cout << "                                   |     -------   | |     |         |     ||              ||     |" << std::endl;
-		std::cout << "                                   |    |       |   | |     |       |     | |     --------- |     |" << std::endl;
-		std::cout << "                                   |    |       |   |  |     |     |     |  |    |          |     |" << std::endl;
-		std::cout << "                                   |    |       |   |   |     |   |     |   |    |          |     |" << std::endl;
-		std::cout << "                                   |     -------   |     |     | |     |    |     --------- |     |" << std::endl;
-		std::cout << "                                   |               |      |           |     |              ||     |" << std::endl;
-		std::cout << "                                   |     --------   |      |         |      |     --------- |     |" << std::endl;
-		std::cout << "                                   |    |        |   |      |       |       |    |          |     |" << std::endl;
-		std::cout << "                                   |    |        |   |      |       |       |    |           -----" << std::endl;
-		std::cout << "                                   |    |        |   |      |       |       |     ---------  -----" << std::endl;
-		std::cout << "                                   |     --------   |       |       |       |              ||     |" << std::endl;
-		std::cout << "                                    ----------------         -------         --------------  -----" << std::endl;
-		std::cout << "============================================================================================================================================" << std::endl;
+	std::string toSearch;
+	system("cls");
+	showEditLogo();
+	std::cout << "What is the name of the element you want to edit?" << std::endl;
+	std::cin >> std::ws;
+	getline(std::cin, toSearch);
+
+	getEditNodeDetails(node, toSearch, sChoice);
+
+	getBack(sChoice);
+}
+
+void showMainMenu(NODE** node)
+{
+	system("cls");
+	showTeamLogo();
+	std::cout << "                                                   --------------------------------" << std::endl;
+	std::cout << "                                                                Menu   " << std::endl;
+	std::cout << "                                                   --------------------------------" << std::endl;
+	std::cout << std::endl << std::endl;
+	std::cout << "                                                          1.Add new event" << std::endl << std::endl;
+	std::cout << "                                                             2.Search" << std::endl << std::endl;
+	std::cout << "                                                          3.Delete event" << std::endl << std::endl;
+	std::cout << "                                                          4.Print events" << std::endl << std::endl;
+	std::cout << "                                                          5.Edit elements" << std::endl << std::endl;
+	std::cout << "                                                              6.Quiz" << std::endl << std::endl;
+	std::cout << "                                                              7.Exit" << std::endl;
 }
 
 void startApp(NODE** node)
 {
 	short int choice = 0;
-	while (choice != 6)
+	while (choice != 7)
 	{
-		showTeamTitle();
-		showMenuOptions(node);
+		showTeamLogo();
+		showMainMenu(node);
 		std::cin >> choice;
 		switch (choice)
 		{
 		case 1: showAddMenu(node, choice);
 			break;
 
-		case 2: showSearchMenuOptions(*node, choice);
+		case 2: showSearchMenu(*node, choice);
 			break;
 
-		case 4: showPrintNodesMenu(*node, choice);
+		case 4: showPrintMenu(*node, choice);
+			break;
+
+		case 5: 
+			showEditMenu(*node, choice);
 			break;
 		default:
 			std::cout << "Incorrect input!" << std::endl;
