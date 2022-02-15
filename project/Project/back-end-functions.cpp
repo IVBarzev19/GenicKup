@@ -279,6 +279,12 @@ void prependNode(NODE** node)
 	assignEra(newNode);
 }
 
+void addByDate(NODE** node)
+{
+	prependNode(node);
+	sortNodesByDate(node);
+}
+
 void appendNode(NODE** node)
 {
 	navigateToEnd(node);
@@ -451,6 +457,48 @@ void searchByTitle(NODE* node, std::string sTitle)
 }
 
 // ==============================> Deleting functions
+void deleteNthNode(NODE*& node, int n)
+{
+
+	if (n == 1)
+	{
+		node = deleteFirstNode(node);
+		return;
+	}
+
+	NODE* temp = node;
+
+	for (int i = 1; i < n; i++)
+	{
+		temp = temp->next;
+		if (temp == NULL)
+			return;
+	}
+
+	NODE* privNode = temp->prev;
+	NODE* nixtNode = temp->next;
+	delete temp;
+
+	privNode->next = nixtNode;
+	if (nixtNode)
+		nixtNode->prev = privNode;
+}
+
+NODE* deleteFirstNode(NODE* node)
+{
+	if (node == NULL)
+		return NULL;
+
+	NODE* temp = new NODE;
+	temp = node;
+	node = node->next;
+	node->prev = NULL;
+
+	delete temp;
+	return node;
+}
+
+
 void deleteAllNodes(NODE** node)
 {
 	navigateToBegining(node);
