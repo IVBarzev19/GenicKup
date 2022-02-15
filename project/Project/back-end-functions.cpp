@@ -405,14 +405,14 @@ void searchByTag(NODE* node, std::string sTag)
 void searchByEra(NODE* node, std::string sEra)
 {
 	navigateToBegining(&node);
-
+	
 	bool hasFound = false;
 
 	while (node != NULL)
 	{
 		if (convertToLower(node->mEra).find(convertToLower(sEra)) != std::string::npos)
 		{
-			std::cout << std::endl << "A node from this era was found : ";
+			std::cout << std::endl << "A node from this era was found : " << std::endl;
 			printNode(node);
 			hasFound = true;
 			break;
