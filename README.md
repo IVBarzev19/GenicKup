@@ -41,7 +41,7 @@
 
 ## Usage
 
-> Finding information about historical events.
+> Finding and learning information about historical events.
 
 ## Support
 
