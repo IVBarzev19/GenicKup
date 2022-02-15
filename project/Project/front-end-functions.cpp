@@ -121,7 +121,7 @@ void showDeleteMenuOptions(NODE* node)
 void getBack(short int& choice)
 {
 	char answer;
-	std::cout << "Do you want to get back to the main menu? y/n" << std::endl;
+	std::cout << "Do you want to continue using the application? y/n" << std::endl;
 	std::cin >> answer;
 	if (tolower(answer) == 'n')
 	{
@@ -235,9 +235,35 @@ void showMenuOptions(NODE** node)
 		std::cout << "                                                          1.Add new event" << std::endl << std::endl;
 		std::cout << "                                                             2.Search" << std::endl << std::endl;
 		std::cout << "                                                          3.Delete event" << std::endl << std::endl;
-		std::cout << "                                                          4.Show all events" << std::endl << std::endl;
+		std::cout << "                                                          4.Print events" << std::endl << std::endl;
 		std::cout << "                                                              5.Quiz" << std::endl << std::endl;
 		std::cout << "                                                              6.Exit" << std::endl;
+}
+
+void showPrintNodesMenu(NODE* node, short int& sChoice)
+{
+	short int choice;
+	std::string toSearch;
+	system("cls");
+	std::cout << "What do you want to print?" << std::endl;
+	std::cout << "1. Every element from a specific era" << std::endl;
+	std::cout << "1. Every element with a specific tag" << std::endl;
+	std::cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		std::cout << "What is the era you are searching for?: ";
+		std::cin >> std::ws;
+		getline(std::cin, toSearch);
+		printSpecificEraNodes(node, toSearch);
+		break;
+	case 2:
+		break;
+	default:
+		std::cout << "Incorrect input" << std::endl;
+		break;
+	}
+	getBack(sChoice);
 }
 
 void startApp(NODE** node)
@@ -254,6 +280,9 @@ void startApp(NODE** node)
 			break;
 
 		case 2: showSearchMenuOptions(*node, choice);
+			break;
+
+		case 4: showPrintNodesMenu(*node, choice);
 			break;
 		default:
 			std::cout << "Incorrect input!" << std::endl;

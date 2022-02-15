@@ -39,6 +39,8 @@ void printNode(NODE* node);
 
 void printAllNodes(NODE* node);
 
+void printSpecificEraNodes(NODE* node, std::string sEra);
+
 // ==============================> Application functionality (searching, sorting etc.)
 void sortNodesByDate(NODE** node);
 
