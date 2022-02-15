@@ -2,6 +2,7 @@
 
 int main()
 {
+	system("color b");
 	NODE* Head = new NODE;
 	Head->mOccasionTitle = "Fall of Constantinople";
 	Head->mOccasionDescription = "The dwindling Byzantine Empire came to an end when the Ottoman ruler Sultan Mehmed II breached Constantinople's ancient land wall after besieging the city for 55 days.";
