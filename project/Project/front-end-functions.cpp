@@ -196,6 +196,8 @@ void showAddMenu(NODE** node, short int& sChoice)
 	std::cout << "What method do you want to use?" << std::endl;
 	std::cout << "1. Appending" << std::endl;
 	std::cout << "2. Prepending" << std::endl;
+	std::cout << std::endl;
+	std::cout << "3. Back to main menu" << std::endl;
 	std::cin >> choice;
 	switch (choice)
 	{
@@ -206,6 +208,9 @@ void showAddMenu(NODE** node, short int& sChoice)
 	case 2:
 		prependNode(node);
 		std::cout << "Element added!" << std::endl;
+		break;
+
+	case 3: return;
 		break;
 	default:
 		std::cout << "Incorrect input" << std::endl;
@@ -225,6 +230,8 @@ void showSearchMenu(NODE* node, short int& sChoice)
 	std::cout << "1. A specific era, the occasion took place in" << std::endl;
 	std::cout << "2. A specific tag, the occasion has" << std::endl;
 	std::cout << "3. The name of the specific occasion" << std::endl;
+	std::cout << std::endl;
+	std::cout << "4. Back to main menu" << std::endl;
 	std::cin >> choice;
 	std::cout << "Great!" << std::endl;
 	switch (choice)
@@ -240,6 +247,10 @@ void showSearchMenu(NODE* node, short int& sChoice)
 	case 3:
 		getSearchByTitleDetails(node);
 		break;
+
+	case 4: return;
+		break;
+
 	default:
 		std::cout << "Incorrect input!" << std::endl;
 		break;
@@ -260,6 +271,8 @@ void showDeleteMenu(NODE* node)
 	std::cout << "4. Delete by node day" << std::endl;
 	std::cout << "5. Delete by node era" << std::endl;
 	std::cout << "6. Delete by node tag" << std::endl;
+	std::cout << std::endl;
+	std::cout << "7. Back to main menu" << std::endl;
 	std::cout << "What parameters do you want to use?: " << std::endl;
 	std::cin >> choice;
 
@@ -300,6 +313,10 @@ void showDeleteMenu(NODE* node)
 		std::cout << "print all nodes that have this criteria" << std::endl;
 		std::cout << "Delete by tag" << std::endl;
 		break;
+
+	case 7: return;
+		break;
+
 	default:
 		std::cout << "Incorrect input!" << std::endl;
 		break;
@@ -316,6 +333,8 @@ void showPrintMenu(NODE* node, short int& sChoice)
 	std::cout << "1. Every element from a specific era" << std::endl;
 	std::cout << "2. Every element with a specific tag" << std::endl;
 	std::cout << "3. Every element" << std::endl;
+	std::cout << std::endl;
+	std::cout << "4. Back to main menu" << std::endl;
 	std::cin >> choice;
 	switch (choice)
 	{
@@ -334,6 +353,11 @@ void showPrintMenu(NODE* node, short int& sChoice)
 	case 3:
 		printAllNodes(node);
 		break;
+
+
+	case 4: return;
+		break;
+
 	default:
 		std::cout << "Incorrect input" << std::endl;
 		break;

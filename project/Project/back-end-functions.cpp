@@ -221,7 +221,9 @@ void assignTag(NODE* node)
 			convertToLower(node->mOccasionTitle).find("battle") != std::string::npos ||
 			convertToLower(node->mOccasionTitle).find("fought") != std::string::npos ||
 			convertToLower(node->mOccasionTitle).find("siege") != std::string::npos ||
-			convertToLower(node->mOccasionTitle).find("defeat") != std::string::npos)
+			convertToLower(node->mOccasionTitle).find("defeat") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("breach") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("besiege") != std::string::npos)
 		{
 			node->mTag = "battle";
 		}
@@ -277,12 +279,6 @@ void prependNode(NODE** node)
 	navigateToBegining(node);
 	assignTag(newNode);
 	assignEra(newNode);
-}
-
-void addByDate(NODE** node)
-{
-	prependNode(node);
-	sortNodesByDate(node);
 }
 
 void appendNode(NODE** node)
@@ -497,7 +493,6 @@ NODE* deleteFirstNode(NODE* node)
 	delete temp;
 	return node;
 }
-
 
 void deleteAllNodes(NODE** node)
 {

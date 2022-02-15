@@ -57,8 +57,6 @@ void assignAllTags(NODE* node);
 
 void prependNode(NODE** node);
 
-void addByDate(NODE** node);
-
 void appendNode(NODE** node);
 
 void editNode(NODE* node);
