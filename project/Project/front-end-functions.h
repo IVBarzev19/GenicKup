@@ -7,11 +7,13 @@ void getSearchByTagDetails(NODE* node);
 
 void getSearchByTitleDetails(NODE* node);
 
-void showSearchMenuOptions(NODE* node);
+void showSearchMenuOptions(NODE* node, short int& sChoice);
 
 void showDeleteMenuOptions(NODE* node);
 
-void showAddMenu(NODE* node);
+void getBack(short int& choice);
+
+void showAddMenu(NODE** node, short int& sChoice);
 
 void showDeleteTitle();
 
@@ -20,3 +22,7 @@ void showSearchTitle();
 void showAddTitle();
 
 void showTeamTitle();
+
+void showMenuOptions(NODE** node);
+
+void startApp(NODE** node);

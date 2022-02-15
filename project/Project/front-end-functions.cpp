@@ -27,9 +27,10 @@ void getSearchByTitleDetails(NODE* node)
 	searchByTitle(node, toSearch);
 }
 
-void showSearchMenuOptions(NODE* node)
+void showSearchMenuOptions(NODE* node, short int& sChoice)
 {
 	short int choice;
+	system("cls");
 	showSearchTitle();
 
 	std::cout << "What are you searching for?" << std::endl;
@@ -55,6 +56,7 @@ void showSearchMenuOptions(NODE* node)
 		std::cout << "Incorrect input!" << std::endl;
 		break;
 	}
+	getBack(sChoice);
 }
 
 void showDeleteMenuOptions(NODE* node)
@@ -116,13 +118,41 @@ void showDeleteMenuOptions(NODE* node)
 	}
 }
 
-void showAddMenu(NODE* node) 
+void getBack(short int& choice)
 {
-	std::cout << "Please give us your node information:" << std::endl;
-	
-	appendNode(&node);
-	sortNodesByDate(&node);
+	char answer;
+	std::cout << "Do you want to get back to the main menu? y/n" << std::endl;
+	std::cin >> answer;
+	if (tolower(answer) == 'n')
+	{
+		choice = 6;
+	}
+}
 
+void showAddMenu(NODE** node, short int& sChoice)
+{
+	short int choice;
+	system("cls");
+	showAddTitle();
+	std::cout << "What method do you want to use?" << std::endl;
+	std::cout << "1. Appending" << std::endl;
+	std::cout << "2. Prepending" << std::endl;
+	std::cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		appendNode(node);
+		break;
+	case 2:
+		prependNode(node);
+		break;
+	default:
+		std::cout << "Incorrect input" << std::endl;
+		break;
+	}
+
+	std::cout << "Element added!" << std::endl;
+	getBack(choice);
 }
 
 void showDeleteTitle() {
@@ -175,20 +205,61 @@ void showAddTitle() {
 	std::cout << "                                     |     |      |     | |    -----    ||    -----    |" << std::endl;
 	std::cout << "                                      -----        -----   -------------  -------------" << std::endl;
 	std::cout << "=============================================================================================================================" << std::endl;
-}*/
+}
 
 void showTeamTitle() {
-	std::cout << "        ________________  ______________  _____        ____  _____  ________________  _____     _____  _____         _____  _____________" << std::endl;
-	std::cout << "       |                ||              ||     |      |    ||     ||                ||     |   |     ||     |       |     ||             |" << std::endl;
-	std::cout << "       |                ||     --------- |      |     |    ||     ||                ||     |  |     | |     |       |     ||      ---    |" << std::endl;
-	std::cout << "       |     ----------- |    |          |       |    |    | ----- |      ---------- |     | |     |  |     |       |     ||     |   |   |" << std::endl;
-	std::cout << "       |     |           |    |          |         |  |    | _____ |     |           |     ||     |   |     |       |     ||      ---    |" << std::endl;
-	std::cout << "       |     |           |     --------- |          | |    ||     ||     |           |           |    |     |       |     ||      -------" << std::endl;
-	std::cout << "       |     |    ------ |              ||    ||     ||    ||     ||     |           |          |     |     |       |     ||     |" << std::endl;
-	std::cout << "       |     |   |      ||     --------- |    | |          ||     ||     |           |           |    |     |       |     ||     |" << std::endl;
-	std::cout << "       |     |   |      ||    |          |    |  |         ||     ||     |           |     ||     |   |     |       |     ||     |" << std::endl;
-	std::cout << "       |     |   |      ||    |          |    |   |        ||     ||      __________ |     | |     |  |     |       |     ||     |" << std::endl;
-	std::cout << "       |       ---      ||     --------- |    |    |       ||     ||                ||     |  |     | |      -------      ||     |" << std::endl;
-	std::cout << "       |                ||              ||    |     |      ||     ||                ||     |   |     ||                   ||     |" << std::endl;
-	std::cout << "        ----------------  --------------  ----       ------  -----  ----------------  -----     -----  -------------------  -----" << std::endl;
+	std::cout << "      ________________  ______________  _____        ____  _____  ________________  _____     _____  _____         _____  _____________" << std::endl;
+	std::cout << "     |                ||              ||     |      |    ||     ||                ||     |   |     ||     |       |     ||             |" << std::endl;
+	std::cout << "     |                ||     --------- |      |     |    ||     ||                ||     |  |     | |     |       |     ||      ---    |" << std::endl;
+	std::cout << "     |     ----------- |    |          |       |    |    | ----- |      ---------- |     | |     |  |     |       |     ||     |   |   |" << std::endl;
+	std::cout << "     |     |           |    |          |         |  |    | _____ |     |           |     ||     |   |     |       |     ||      ---    |" << std::endl;
+	std::cout << "     |     |           |     --------- |          | |    ||     ||     |           |           |    |     |       |     ||      -------" << std::endl;
+	std::cout << "     |     |    ------ |              ||    ||     ||    ||     ||     |           |          |     |     |       |     ||     |" << std::endl;
+	std::cout << "     |     |   |      ||     --------- |    | |          ||     ||     |           |           |    |     |       |     ||     |" << std::endl;
+	std::cout << "     |     |   |      ||    |          |    |  |         ||     ||     |           |     ||     |   |     |       |     ||     |" << std::endl;
+	std::cout << "     |     |   |      ||    |          |    |   |        ||     ||      __________ |     | |     |  |     |       |     ||     |" << std::endl;
+	std::cout << "     |       ---      ||     --------- |    |    |       ||     ||                ||     |  |     | |      -------      ||     |" << std::endl;
+	std::cout << "     |                ||              ||    |     |      ||     ||                ||     |   |     ||                   ||     |" << std::endl;
+	std::cout << "      ----------------  --------------  ----       ------  -----  ----------------  -----     -----  -------------------  -----" << std::endl;
+	std::cout << "============================================================================================================================================" << std::endl;
 }
+
+void showMenuOptions(NODE** node)
+{
+		system("cls");
+		showTeamTitle();
+		std::cout << "                                                   --------------------------------" << std::endl;
+		std::cout << "                                                                Menu   " << std::endl;
+		std::cout << "                                                   --------------------------------" << std::endl;
+		std::cout << std::endl << std::endl;
+		std::cout << "                                                          1.Add new event" << std::endl << std::endl;
+		std::cout << "                                                             2.Search" << std::endl << std::endl;
+		std::cout << "                                                          3.Delete event" << std::endl << std::endl;
+		std::cout << "                                                          4.Show all events" << std::endl << std::endl;
+		std::cout << "                                                              5.Quiz" << std::endl << std::endl;
+		std::cout << "                                                              6.Exit" << std::endl;
+}
+
+void startApp(NODE** node)
+{
+	short int choice = 0;
+	while (choice != 6)
+	{
+		showTeamTitle();
+		showMenuOptions(node);
+		std::cin >> choice;
+		switch (choice)
+		{
+		case 1: showAddMenu(node, choice);
+			break;
+
+		case 2: showSearchMenuOptions(*node, choice);
+			break;
+		default:
+			std::cout << "Incorrect input!" << std::endl;
+			break;
+		}
+	}
+}
+
+//std::cout << "============================================================================================================================================" << std::endl;

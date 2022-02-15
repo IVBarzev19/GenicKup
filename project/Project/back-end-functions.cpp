@@ -147,27 +147,31 @@ void sortNodesByDate(NODE** node)
 
 void assignEra(NODE* node)
 {
-	if (node->mOccasionYear != 0)
+	if (node->mEra == "Era not set")
 	{
-		if (node->mOccasionYear < -1200)
+
+		if (node->mOccasionYear != 0)
 		{
-			node->mEra = "Prehistory";
-		}
-		else if (node->mOccasionYear < 600)
-		{
-			node->mEra = "Classical era";
-		}
-		else if (node->mOccasionYear < 1500)
-		{
-			node->mEra = "Middle ages";
-		}
-		else if (node->mOccasionYear < 1815)
-		{
-			node->mEra = "Early modern era";
-		}
-		else
-		{
-			node->mEra = "Modern era";
+			if (node->mOccasionYear < -1200)
+			{
+				node->mEra = "Prehistory";
+			}
+			else if (node->mOccasionYear < 600)
+			{
+				node->mEra = "Classical era";
+			}
+			else if (node->mOccasionYear < 1500)
+			{
+				node->mEra = "Middle ages";
+			}
+			else if (node->mOccasionYear < 1815)
+			{
+				node->mEra = "Early modern era";
+			}
+			else
+			{
+				node->mEra = "Modern era";
+			}
 		}
 	}
 }
@@ -186,35 +190,43 @@ void assignAllEras(NODE* node)
 //not complete - must add more tags
 void assignTag(NODE* node)
 {
-	if (convertToLower(node->mOccasionTitle).find("conquer") != std::string::npos ||
-		convertToLower(node->mOccasionTitle).find("battle") != std::string::npos ||
-		convertToLower(node->mOccasionTitle).find("fought") != std::string::npos ||
-		convertToLower(node->mOccasionTitle).find("siege") != std::string::npos ||
-		convertToLower(node->mOccasionTitle).find("defeat") != std::string::npos)
+	if (node->mTag == "Tag not set")
 	{
-		node->mTag = "battle";
-	}
-	else
-		if (convertToLower(node->mOccasionTitle).find("contract") != std::string::npos ||
-			convertToLower(node->mOccasionTitle).find("sign") != std::string::npos ||
-			convertToLower(node->mOccasionTitle).find("treaty") != std::string::npos)
+		if (convertToLower(node->mOccasionTitle).find("conquer") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("battle") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("fought") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("siege") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("defeat") != std::string::npos)
 		{
-			node->mTag = "treaty";
+			node->mTag = "battle";
 		}
 		else
-			if (convertToLower(node->mOccasionTitle).find("uprising") != std::string::npos ||
-				convertToLower(node->mOccasionTitle).find("rose") != std::string::npos ||
-				convertToLower(node->mOccasionTitle).find("rise") != std::string::npos)
+			if (convertToLower(node->mOccasionTitle).find("contract") != std::string::npos ||
+				convertToLower(node->mOccasionTitle).find("sign") != std::string::npos ||
+				convertToLower(node->mOccasionTitle).find("treaty") != std::string::npos)
 			{
-				node->mTag = "uprising";
+				node->mTag = "treaty";
 			}
 			else
-			{
-				std::cout << "Program was unable to set tag automatically for occasion " << node->mOccasionTitle << ", please do so manually..." << std::endl;
-				std::cout << "Tag: ";
-				std::cin >> std::ws;
-				getline(std::cin, node->mTag);
-			}
+				if (convertToLower(node->mOccasionTitle).find("uprising") != std::string::npos ||
+					convertToLower(node->mOccasionTitle).find("rose") != std::string::npos ||
+					convertToLower(node->mOccasionTitle).find("rise") != std::string::npos)
+				{
+					node->mTag = "uprising";
+				}
+				else
+				{
+					if (node->mTag == "Tag not set")
+					{
+						std::cout << "Program was unable to set tag automatically for occasion " << node->mOccasionTitle << ", please do so manually..." << std::endl;
+						std::cout << "Tag: ";
+						std::cin >> std::ws;
+						getline(std::cin, node->mTag);
+					}
+				}
+	}
+	else
+		return;
 }
 
 void assignAllTags(NODE* node)
@@ -226,8 +238,6 @@ void assignAllTags(NODE* node)
 		assignTag(node);
 		node = node->next;
 	}
-
-
 }
 
 void prependNode(NODE** node)
@@ -240,6 +250,8 @@ void prependNode(NODE** node)
 	newNode->prev = NULL;
 	(*node)->prev = newNode;
 	navigateToBegining(node);
+	assignTag(newNode);
+	assignEra(newNode);
 }
 
 void appendNode(NODE** node)
@@ -251,6 +263,8 @@ void appendNode(NODE** node)
 	newNode->next = NULL;
 	newNode->prev = *node;
 	(*node)->next = newNode;
+	assignTag(newNode);
+	assignEra(newNode);
 
 	navigateToBegining(node);
 }
