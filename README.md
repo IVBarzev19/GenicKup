@@ -14,7 +14,7 @@
 </div>
 
 <details open="open">
-<summary>Table of Contents</summary>
+<summary>📗Table of Contents📘</summary>
 
 - [About](#about)
 - [Built With](#built-with)
@@ -59,7 +59,7 @@ Together, we can make GenicKup **better**!
 
 ## Contributing
 
-First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
+First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**. 🙏
 
 
 ## Authors & contributors
