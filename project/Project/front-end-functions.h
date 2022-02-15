@@ -27,7 +27,7 @@ void showAddMenu(NODE** node, short int& sChoice);
 
 void showSearchMenu(NODE* node, short int& sChoice);
 
-void showDeleteMenu(NODE* node);
+void showDeleteMenu(NODE* node, short int& sChoice);
 
 void showPrintMenu(NODE* node, short int& sChoice);
 

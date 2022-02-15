@@ -258,69 +258,92 @@ void showSearchMenu(NODE* node, short int& sChoice)
 	getBack(sChoice);
 }
 
-void showDeleteMenu(NODE* node)
+void showDeleteMenu(NODE* node, short int& sChoice)
 {
 	short int choice;
-
+	
 	showDeleteLogo();
 
 	std::cout << "Available delete-by functions:" << std::endl;
-	std::cout << "1. Delete by node title" << std::endl;
-	std::cout << "2. Delete by node year" << std::endl;
-	std::cout << "3. Delete by node month" << std::endl;
-	std::cout << "4. Delete by node day" << std::endl;
-	std::cout << "5. Delete by node era" << std::endl;
-	std::cout << "6. Delete by node tag" << std::endl;
-	std::cout << std::endl;
-	std::cout << "7. Back to main menu" << std::endl;
-	std::cout << "What parameters do you want to use?: " << std::endl;
+	std::cout << "1. Display all Nodes for one to be delete" << std::endl;
+	std::cout << "2. Delete by tag" << std::endl;
+	std::cout << "3. Delete by era" << std::endl;
 	std::cin >> choice;
+
 
 	switch (choice)
 	{
 	case 1:
-		//deleteByTitle(node);
-		std::cout << "print all nodes that have this criteria" << std::endl;
-		std::cout << "Delete by title" << std::endl;
+	{
+		//Displays all nodes
+		std::cout << '\n'<<"Select which of the nodes shown above you want to delete";
+		printAllNodes(node);
+		int numOfNodeToBeDelete = 0;
+		std::cin >> numOfNodeToBeDelete;
+		deleteNthNode(node, numOfNodeToBeDelete);
 		break;
-
+	}
 	case 2:
-		//deleteByYear(node);
-		std::cout << "print all nodes that have this criteria" << std::endl;
-		std::cout << "Delete by year" << std::endl;
+	{
+		NODE* temp = node;
+		std::string tag;
+		std::cout << std::endl << "Enter what the tag of the elements you wish to delete is " << std::endl;
+		std::cin >> std::ws;
+		getline(std::cin, tag);
+		//find the nodes with the given tag
+		while (searchByTag(temp, tag) != NULL && temp != NULL)
+		{
+			if (temp->prev == NULL && temp->next == NULL)
+			{
+				std::cout << "No more nodes that can be delete were found\n\n";
+				break;
+			}
+			std::cout << std::endl << "A node from this era was found : " << std::endl;
+			printNode(temp);
+			std::cout << "Do you wish to delete this node? y/n" << std::endl;
+			char answer;
+			std::cin >> answer;
+			if (tolower(answer) == 'y')
+			{
+				deleteNode(node);
+			}
+		}
 		break;
-
+	}
 	case 3:
-		//deleteByMonth(node);
-		std::cout << "print all nodes that have this criteria" << std::endl;
-		std::cout << "Delete by month" << std::endl;
+	{
+		//search by era
+		NODE* temp = node;
+		std::string era;
+		std::cout << std::endl << "Enter what the era of the elements you wish to delete is " << std::endl;
+		std::cin >> std::ws;
+		getline(std::cin, era);
+		//find the nodes with the given era
+		while (searchByEra(temp, era) != NULL && temp != NULL)
+		{
+			if (temp->prev == NULL && temp->next == NULL)
+			{
+				std::cout << "No more nodes that can be delete were found\n\n";
+				break;
+			}
+			std::cout << std::endl << "A node from this era was found : " << std::endl;
+			printNode(temp);
+			std::cout << "Do you wish to delete this node? y/n" << std::endl;
+			char answer;
+			std::cin >> answer;
+			if (tolower(answer) == 'y')
+			{
+				deleteNode(node);
+			}
+		}
 		break;
-
-	case 4:
-		//deleteByDay(node);
-		std::cout << "print all nodes that have this criteria" << std::endl;
-		std::cout << "Delete by day" << std::endl;
-		break;
-
-	case 5:
-		//deleteByEra(node);
-		std::cout << "print all nodes that have this criteria" << std::endl;
-		std::cout << "Delete by era" << std::endl;
-		break;
-
-	case 6:
-		//deleteByTag(node);
-		std::cout << "print all nodes that have this criteria" << std::endl;
-		std::cout << "Delete by tag" << std::endl;
-		break;
-
-	case 7: return;
-		break;
+	}
 
 	default:
 		std::cout << "Incorrect input!" << std::endl;
 		break;
 	}
+	getBack(sChoice);
 }
 
 void showPrintMenu(NODE* node, short int& sChoice)
@@ -410,6 +433,9 @@ void startApp(NODE** node)
 			break;
 
 		case 2: showSearchMenu(*node, choice);
+			break;
+
+		case 3: showDeleteMenu(*node, choice);
 			break;
 
 		case 4: showPrintMenu(*node, choice);

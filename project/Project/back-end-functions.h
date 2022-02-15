@@ -61,15 +61,16 @@ void appendNode(NODE** node);
 
 void editNode(NODE* node);
 
-void searchByTag(NODE* node, std::string sTag);
+NODE* searchByTag(NODE* start, std::string sTag);
 
-void searchByEra(NODE* node, std::string sEra);
+NODE* searchByEra(NODE* node, std::string sEra);
 
 void searchByTitle(NODE* node, std::string sTitle);
 
+NODE* searchNodeByPosition(NODE* node, int n);
 // ==============================> Deleting functions
-void deleteNthNode(NODE*& node, int i);
+void deleteNthNode(NODE*& node, int n);
 
-NODE* deleteFirstNode(NODE* node);
+void deleteNode(NODE*& node);
 
 void deleteAllNodes(NODE** node);

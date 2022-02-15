@@ -102,9 +102,11 @@ void printNode(NODE* node)
 void printAllNodes(NODE* node)
 {
 	navigateToBegining(&node);
-
+	int c = 0;
 	while (node != NULL)
 	{
+		c++;
+		std::cout << "Node number : " << c << "\n";
 		printNode(node);
 		node = node->next;
 	}
@@ -380,52 +382,49 @@ void editNode(NODE* node)
 	}
 }
 
-void searchByTag(NODE* node, std::string sTag)
-{
-	navigateToBegining(&node);
 
+
+NODE* searchByTag(NODE* start, std::string sTag)
+{
 	bool hasFound = false;
 
-	while (node != NULL)
+	while (start != NULL)
 	{
-		if (node->mTag.find(sTag) != std::string::npos)
+		if (start->mTag.find(sTag) != std::string::npos)
 		{
-			std::cout << std::endl << "A node with this tag was found : ";
-			printNode(node);
-			hasFound = true;
-			break;
+			return start;
 		}
-		node = node->next;
+		start = start->next;
 	}
 	
 	if (!hasFound)
 	{
 		std::cout << "No such node was found!" << std::endl;
 	}
+	return NULL;
 }
 
-void searchByEra(NODE* node, std::string sEra)
+NODE* searchByEra(NODE* start, std::string sEra)
 {
-	navigateToBegining(&node);
+	navigateToBegining(&start);
 	
 	bool hasFound = false;
 
-	while (node != NULL)
+	while (start != NULL)
 	{
-		if (convertToLower(node->mEra).find(convertToLower(sEra)) != std::string::npos)
+		if (convertToLower(start->mEra).find(convertToLower(sEra)) != std::string::npos)
 		{
-			std::cout << std::endl << "A node from this era was found : " << std::endl;
-			printNode(node);
 			hasFound = true;
+			return start;
 			break;
 		}
-		node = node->next;
+		start = start->next;
 	}
-
 	if (!hasFound)
 	{
 		std::cout << "No such node was found!" << std::endl;
 	}
+	return NULL;
 }
 
 void searchByTitle(NODE* node, std::string sTitle)
@@ -452,18 +451,34 @@ void searchByTitle(NODE* node, std::string sTitle)
 	}
 }
 
+NODE* searchNodeByPosition(NODE* node,int n)
+{
+	navigateToBegining(&node);
+	if (n > 1)
+	{
+		return searchNodeByPosition(node->next, n - 1);
+	}
+	return node;
+}
+
 // ==============================> Deleting functions
 void deleteNthNode(NODE*& node, int n)
 {
-
+	navigateToBegining(&node);
+	NODE* temp = node;
+	//deletes the first Node
 	if (n == 1)
 	{
-		node = deleteFirstNode(node);
-		return;
+		if (temp->next == NULL)
+		{
+			std::cout << "You can't make the list empty!\n";
+			return;
+		}
+		swapNodes(&temp, &temp->next);
+		n++;
 	}
-
-	NODE* temp = node;
-
+	
+	//deletes any other node
 	for (int i = 1; i < n; i++)
 	{
 		temp = temp->next;
@@ -476,22 +491,37 @@ void deleteNthNode(NODE*& node, int n)
 	delete temp;
 
 	privNode->next = nixtNode;
-	if (nixtNode)
+	if (nixtNode != NULL)
+	{
 		nixtNode->prev = privNode;
+	}
 }
 
-NODE* deleteFirstNode(NODE* node)
+void deleteNode(NODE*& node)
 {
-	if (node == NULL)
-		return NULL;
+	NODE* temp = node;
+	//deletes the first Node
+	if (temp->prev == NULL)
+	{
+		if (temp->next == NULL)
+		{
+			std::cout << "You can't make the list empty!\n";
+			return;
+		}
+		swapNodes(&temp, &temp->next);
+		temp=temp->next;
+	}
 
-	NODE* temp = new NODE;
-	temp = node;
-	node = node->next;
-	node->prev = NULL;
-
+	//deletes any other node
+	NODE* privNode = temp->prev;
+	NODE* nixtNode = temp->next;
 	delete temp;
-	return node;
+
+	privNode->next = nixtNode;
+	if (nixtNode != NULL)
+	{
+		nixtNode->prev = privNode;
+	}
 }
 
 void deleteAllNodes(NODE** node)
