@@ -57,6 +57,8 @@ void assignAllTags(NODE* node);
 
 void prependNode(NODE** node);
 
+void addByDate(NODE** node);
+
 void appendNode(NODE** node);
 
 void searchByTag(NODE* node, std::string sTag);
@@ -66,4 +68,8 @@ void searchByEra(NODE* node, std::string sEra);
 void searchByTitle(NODE* node, std::string sTitle);
 
 // ==============================> Deleting functions
+void deleteNthNode(NODE*& node, int i);
+
+NODE* deleteFirstNode(NODE* node);
+
 void deleteAllNodes(NODE** node);
