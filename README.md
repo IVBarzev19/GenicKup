@@ -17,7 +17,7 @@
 <summary>Table of Contents</summary>
 
 - [About](#about)
-  - [Built With](#built-with)
+- [Built With](#built-with)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Support](#support)
@@ -31,10 +31,9 @@
 
 ## About
 
-> An program with the perperous to easily find and learn about historical events
+> An program with the perperous to easily find and learn about historical events.
 
 ### Built With
-
 
 > Visual Studio, GitHub, Paint net, Microsoft Office
 
@@ -42,7 +41,8 @@
 
 ## Usage
 
-> Finding information about historical events
+> Finding information about historical events.
+
 ## Support
 
 > You can always contact us on discord - tornado831#2878
