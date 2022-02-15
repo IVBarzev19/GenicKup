@@ -19,7 +19,6 @@
 - [About](#about)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
-  - [Installation](#installation)
 - [Usage](#usage)
 - [Support](#support)
 - [Project assistance](#project-assistance)
@@ -40,10 +39,6 @@
 > Visual Studio, GitHub, Paint net, Microsoft Office
 
 ## Getting Started
-
-### Installation
-
-> In order to install our game you will need to download the .exe file and run it.
 
 ## Usage
 
