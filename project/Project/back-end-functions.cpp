@@ -44,19 +44,6 @@ void navigateToEnd(NODE** node)
 	}
 }
 
-int countNodes(NODE* node)
-{
-	navigateToBegining(&node);
-	int i;
-
-	for (i = 0; node != NULL; i++)
-	{
-		node = node->next;
-	}
-
-	return i;
-}
-
 void swapStrings(std::string& str, std::string& str2)
 {
 	std::string temp = str;
@@ -85,6 +72,19 @@ void swapNodes(NODE** fNode, NODE** sNode)
 	swapInts((*fNode)->mOccasionYear, (*sNode)->mOccasionYear);
 	swapInts((*fNode)->mOccasionMonth, (*sNode)->mOccasionMonth);
 	swapInts((*fNode)->mOccasionDay, (*sNode)->mOccasionDay);
+}
+
+int countNodes(NODE* node)
+{
+	navigateToBegining(&node);
+	int i;
+
+	for (i = 0; node != NULL; i++)
+	{
+		node = node->next;
+	}
+
+	return i;
 }
 
 void printNode(NODE* node)
@@ -217,6 +217,7 @@ void assignTag(NODE* node)
 	if (node->mTag == "Tag not set")
 	{
 		if (convertToLower(node->mOccasionTitle).find("conquer") != std::string::npos ||
+			convertToLower(node->mOccasionTitle).find("conquest") != std::string::npos ||
 			convertToLower(node->mOccasionTitle).find("battle") != std::string::npos ||
 			convertToLower(node->mOccasionTitle).find("fought") != std::string::npos ||
 			convertToLower(node->mOccasionTitle).find("siege") != std::string::npos ||
@@ -291,6 +292,90 @@ void appendNode(NODE** node)
 	assignEra(newNode);
 
 	navigateToBegining(node);
+}
+
+void editNode(NODE* node)
+{
+	short int choice;
+	char confirm;
+	std::string str;
+	short int temp;
+	std::cout << "What do you want to edit?" << std::endl;
+	std::cout << "1. Title" << std::endl;
+	std::cout << "2. Description" << std::endl;
+	std::cout << "3. Year" << std::endl;
+	std::cout << "4. Month" << std::endl;
+	std::cout << "5. Day" << std::endl;
+	std::cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+		std::cout << "Enter the new title: " << std::endl;
+		std::cin >> std::ws;
+		getline(std::cin, str);
+		std::cout << "Confirm change? y/n" << std::endl;
+		std::cout << node->mOccasionTitle << " -> " << str << std::endl;
+		std::cin >> confirm;
+		if (confirm == 'y')
+		{
+			node->mOccasionTitle = str;
+		}
+		break;
+
+	case 2:
+		std::cout << "Enter the new description: " << std::endl;
+		std::cin >> std::ws;
+		getline(std::cin, str);
+		std::cout << "Confirm change? y/n" << std::endl;
+		std::cout << node->mOccasionDescription << " -> " << str << std::endl;
+		std::cin >> confirm;
+		if (confirm == 'y')
+		{
+			node->mOccasionDescription = str;
+		}
+		break;
+
+	case 3:
+		std::cout << "Enter the new year: " << std::endl;
+		std::cin >> temp;
+		std::cout << "Confirm change? y/n" << std::endl;
+		std::cout << node->mOccasionYear << " -> " << temp << std::endl;
+		std::cin >> confirm;
+		if (confirm == 'y')
+		{
+			node->mOccasionYear = temp;
+		}
+		break;
+
+	case 4:
+		std::cout << "Enter the new month: " << std::endl;
+		std::cin >> temp;
+		std::cout << "Confirm change? y/n" << std::endl;
+		std::cout << node->mOccasionMonth << " -> " << temp << std::endl;
+		std::cin >> confirm;
+		if (confirm == 'y')
+		{
+			node->mOccasionMonth = temp;
+		}
+		break;
+
+	case 5:
+		std::cout << "Enter the new day: " << std::endl;
+		std::cin >> temp;
+		std::cout << "Confirm change? y/n" << std::endl;
+		std::cout << node->mOccasionDay << " -> " << temp << std::endl;
+		std::cin >> confirm;
+		if (confirm == 'y')
+		{
+			node->mOccasionDay = temp;
+		}
+		break;
+
+	default:
+		std::cout << "Incorrect input!" << std::endl;
+		break;
+	}
 }
 
 void searchByTag(NODE* node, std::string sTag)

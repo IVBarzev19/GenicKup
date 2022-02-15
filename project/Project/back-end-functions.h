@@ -25,8 +25,6 @@ void navigateToBegining(NODE** node);
 
 void navigateToEnd(NODE** node);
 
-int countNodes(NODE* node);
-
 void swapStrings(std::string& str, std::string& str2);
 
 void swapInts(short int& a, short int& b);
@@ -34,6 +32,8 @@ void swapInts(short int& a, short int& b);
 void swapInts(unsigned short int& a, unsigned short int& b);
 
 void swapNodes(NODE** fNode, NODE** sNode);
+
+int countNodes(NODE* node);
 
 void printNode(NODE* node);
 
@@ -58,6 +58,8 @@ void assignAllTags(NODE* node);
 void prependNode(NODE** node);
 
 void appendNode(NODE** node);
+
+void editNode(NODE* node);
 
 void searchByTag(NODE* node, std::string sTag);
 
