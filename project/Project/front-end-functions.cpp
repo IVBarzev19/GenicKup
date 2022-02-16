@@ -246,32 +246,34 @@ void showAddMenu(NODE** node, short int& sChoice)
 void showSearchMenu(NODE* node, short int& sChoice)
 {
 	short int choice;
+	std::string toSearch;
 	system("cls");
 	showSearchLogo();
 
 	std::cout << "What are you searching for?" << std::endl;
 	std::cout << "1. A specific era, the occasion took place in" << std::endl;
 	std::cout << "2. A specific tag, the occasion has" << std::endl;
-	std::cout << "3. The name of the specific occasion" << std::endl;
 	std::cout << std::endl;
-	std::cout << "4. Back to main menu" << std::endl;
+	std::cout << "3. Back to main menu" << std::endl;
 	std::cin >> choice;
 	std::cout << "Great!" << std::endl;
 	switch (choice)
 	{
 	case 1:
-		getSearchByEraDetails(node);
+		std::cout << "What is the era you are searching for?: ";
+		std::cin >> std::ws;
+		getline(std::cin, toSearch);
+		printSpecificEraNodes(node, toSearch);
 		break;
 
 	case 2:
-		getSearchByTagDetails(node);
+		std::cout << "What is the tag you are searching for?: ";
+		std::cin >> std::ws;
+		getline(std::cin, toSearch);
+		printSpecificTagNodes(node, toSearch);
 		break;
 
-	case 3:
-		getSearchByTitleDetails(node);
-		break;
-
-	case 4: return;
+	case 3: return;
 		break;
 
 	default:
@@ -299,7 +301,7 @@ void showDeleteMenu(NODE* node, short int& sChoice)
 	case 1:
 	{
 		//Displays all nodes
-		std::cout << '\n'<<"Select which of the nodes shown above you want to delete";
+		std::cout << '\n'<<"Select which of the nodes shown above you want to delete\n";
 		printAllNodes(node);
 		int numOfNodeToBeDelete = 0;
 		std::cin >> numOfNodeToBeDelete;
@@ -438,7 +440,7 @@ void showMainMenu(NODE** node)
 	std::cout << "                                                          3.Delete event" << std::endl << std::endl;
 	std::cout << "                                                          4.Print events" << std::endl << std::endl;
 	std::cout << "                                                          5.Edit elements" << std::endl << std::endl;
-	std::cout << "                                                              6.Quiz" << std::endl << std::endl;
+	std::cout << "                                                            6.About us" << std::endl << std::endl;
 	std::cout << "                                                              7.Exit" << std::endl;
 }
 

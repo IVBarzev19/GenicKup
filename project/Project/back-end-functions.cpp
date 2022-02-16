@@ -269,6 +269,7 @@ void assignAllTags(NODE* node)
 	}
 }
 
+//puts a node at the start of the list
 void prependNode(NODE** node)
 {
 	navigateToBegining(node);
@@ -283,6 +284,7 @@ void prependNode(NODE** node)
 	assignEra(newNode);
 }
 
+//puts a node at the end of the list
 void appendNode(NODE** node)
 {
 	navigateToEnd(node);
